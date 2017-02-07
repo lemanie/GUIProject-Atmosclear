@@ -1,8 +1,6 @@
 import { h, Component } from 'preact';
 import style from './style';
 
-console.log(style);
-
 export default class Events extends Component {
 	render() {
 		return (
