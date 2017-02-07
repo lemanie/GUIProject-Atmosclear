@@ -7,9 +7,9 @@ export default class Footer extends Component {
 		return (								
 			<div class={"toolbar " + style.toolbar}>
 				<div class="toolbar-inner">
-					<a href="#" class="link"><i class="material-icons">alarm</i></a>
-					<a href="#" class="link"><i class="material-icons">home</i></a>
-					<a href="#" class="link"><i class="material-icons">event</i></a>
+					<a href="#day-forecast" class="link"><i class="material-icons">alarm</i></a>
+					<a href="#index" class="link"><i class="material-icons">home</i></a>
+					<a href="#week-forecast" class="link"><i class="material-icons">event</i></a>
 				</div>
 			</div>
 		);

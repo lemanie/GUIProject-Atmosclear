@@ -1,12 +1,14 @@
 var myApp = new Framework7({
-	root : "#app"	
+	root : "#app",
+	animateNavBackIcon: true
 });
 
 var $$ = Dom7;
 
 // Add view
 var mainView = myApp.addView('.view-main', {
-	dynamicNavbar: true
+	dynamicNavbar: true,
+	domCache:true
 });
 
 // Init slider and store its instance in mySwiper variable
