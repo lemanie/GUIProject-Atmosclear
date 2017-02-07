@@ -1,8 +1,22 @@
 import { h, Component } from 'preact';
+
 import style from './style';
 
+const SEARCH = 'http://149.210.182.182/ds.php';
+
 export default class Sensors extends Component {
-	render() {
+	async componentDidMount() {
+		let res = await fetch(`${SEARCH}?lat=37.8267&long=-122.4233`,
+			{
+				method: 'GET'
+			}
+		), // random coordinates for now, we need to ask for permission through google sensor
+			json = await res.json(),
+			results = json && json.items || [];
+		this.setState({ results });
+	}
+	
+	render({}, { results=[] }) {
 		return (
 			<div class={style.sensors}>
 				<div class="row">
