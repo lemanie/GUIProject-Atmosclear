@@ -85,5 +85,13 @@
   "main": "webpack.config.babel.js",
   "directories": {
     "test": "test"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melaniebryant/GUIProject-Atmosclear.git"
+  },
+  "bugs": {
+    "url": "https://github.com/melaniebryant/GUIProject-Atmosclear/issues"
+  },
+  "homepage": "https://github.com/melaniebryant/GUIProject-Atmosclear#readme"
 }
