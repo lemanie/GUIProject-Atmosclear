@@ -1,7 +1,7 @@
 {
   "name": "atmosclear",
   "version": "1.0.0",
-  "description": "",
+  "description": "Overview ======",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --progress",
     "start": "serve build -s -c 1",
