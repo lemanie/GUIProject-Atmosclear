@@ -7,7 +7,7 @@ export default class DayForecast extends Component {
 			<div class={style.dayForecast}>
 				<div class={"row " + style.headerrow}>
 				  <div class={style.block + " " + style.col1}>
-					
+
 				  </div>
 				  <div class={style.block + " " + style.col2}>
 					<i class={"wi wi-strong-wind " + style.icon}></i>
@@ -41,7 +41,7 @@ export default class DayForecast extends Component {
 				  </div>
 				  <div class={style.block + " " + style.col5}>
 					70%
-				  </div>			  
+				  </div>
 				</div>
 				<div class={"row " + style.bodyrow}>
 				  <div class={style.block + " " + style.col1}>
@@ -58,7 +58,7 @@ export default class DayForecast extends Component {
 				  </div>
 				  <div class={style.block + " " + style.col5}>
 					70%
-				  </div>			  
+				  </div>
 				</div>
 				<div class={"row " + style.bodyrow}>
 				  <div class={style.block + " " + style.col1}>
@@ -75,7 +75,7 @@ export default class DayForecast extends Component {
 				  </div>
 				  <div class={style.block + " " + style.col5}>
 					70%
-				  </div>			  
+				  </div>
 				</div>
 				<div class={"row " + style.bodyrow}>
 				  <div class={style.block + " " + style.col1}>
@@ -92,7 +92,7 @@ export default class DayForecast extends Component {
 				  </div>
 				  <div class={style.block + " " + style.col5}>
 					70%
-				  </div>			  
+				  </div>
 				</div>
 				<div class={"row " + style.bodyrow}>
 				  <div class={style.block + " " + style.col1}>
@@ -109,7 +109,7 @@ export default class DayForecast extends Component {
 				  </div>
 				  <div class={style.block + " " + style.col5}>
 					70%
-				  </div>			  
+				  </div>
 				</div>
 				<div class={"row " + style.bodyrow}>
 				  <div class={style.block + " " + style.col1}>
@@ -126,7 +126,7 @@ export default class DayForecast extends Component {
 				  </div>
 				  <div class={style.block + " " + style.col5}>
 					70%
-				  </div>			  
+				  </div>
 				</div>
 				<div class={"row " + style.bodyrow}>
 				  <div class={style.block + " " + style.col1}>
@@ -143,7 +143,7 @@ export default class DayForecast extends Component {
 				  </div>
 				  <div class={style.block + " " + style.col5}>
 					70%
-				  </div>			  
+				  </div>
 				</div>
 			</div>
 		);

@@ -1,5 +1,3 @@
-// import 'promise-polyfill';
-// import 'isomorphic-fetch';
 import { h, render } from 'preact';
 import './style';
 
@@ -8,21 +6,21 @@ import f7 from './lib/framework7.min.js';
 let root;
 function init() {
 	let App = require('./components/index').default;
-	root = render(<App />, document.body, root);
+	root = render(<App />, document.body, root); //we render the app here
 
+	// We setup Framework7 here
 	var myApp = new Framework7({
-		root : "#app",
-		animateNavBackIcon : true
+		root : "#app" //where does the app start, at the div with #app as id
 	});
 
-	// Add view
+	// Add one view (see index.js to see where the main view is defined)
 	var mainView = myApp.addView('.view-main', {
 		dynamicNavbar : true,
 		domCache : true
 	});
 
 	// Init slider and store its instance in mySwiper variable
-	var mySwiper = myApp.swiper('.swiper-container');
+	var mySwiper = myApp.swiper('.swiper-container'); // should this be done in the events component? would be neater
 }
 
 // register ServiceWorker via OfflinePlugin, for prod only:
