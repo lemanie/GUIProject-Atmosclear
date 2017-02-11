@@ -14,11 +14,10 @@
   },
   "keywords": [
     "preact",
-    "boilerplate",
     "webpack"
   ],
   "license": "MIT",
-  "author": "Jason Miller <jason@developit.ca>",
+  "author": "LAMBS",
   "devDependencies": {
     "autoprefixer": "^6.4.0",
     "babel": "^6.5.2",

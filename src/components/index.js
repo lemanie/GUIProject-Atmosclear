@@ -8,7 +8,7 @@ import Settings from './settings'; // Import the settings page
 import DayForecast from './dayforecast'; // Import the day forecast page (left)
 import WeekForecast from './weekforecast'; // Import the week forecast page (right)
 
-export default class App extends Component {	
+export default class App extends Component {
 	render() {
 		return (
 			<div class="device-wrapper">
