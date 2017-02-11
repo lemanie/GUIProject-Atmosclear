@@ -1,57 +1,45 @@
 import { h, Component } from 'preact';
-import { Router } from 'preact-router';
 
-import Header from './header';
-import Home from './home';
-import Footer from './footer';
-import Profile from './profile';
-import Events from './events';
-import Sensors from './sensors';
-import Settings from './settings';
-import DayForecast from './dayforecast';
-import WeekForecast from './weekforecast';
+import Header from './header'; // Import the header component
+import Footer from './footer'; // Import the footer component
+import Events from './events'; // Import the events component
+import Sensors from './sensors'; // Import the sensors component
+import Settings from './settings'; // Import the settings page
+import DayForecast from './dayforecast'; // Import the day forecast page (left)
+import WeekForecast from './weekforecast'; // Import the week forecast page (right)
 
-export default class App extends Component {
-	/** Gets fired when the route changes.
-	 *	@param {Object} event		"change" event from [preact-router](http://git.io/preact-router)
-	 *	@param {string} event.url	The newly routed URL
-	 */
-	handleRoute = e => {
-		this.currentUrl = e.url;
-	};
-	
+export default class App extends Component {	
 	render() {
 		return (
-			<div class="devices">
-				<div class="device device-android">
-					<div id="app">
-						<div class="statusbar-overlay"></div>
-						<div class="panel-overlay"></div>
-						<div class="panel panel-left panel-cover">
-							<Settings />
-						</div>	
-						<div class="views">
+			<div class="device-wrapper">
+				<div class="device device-android">  {/*Create android feel around app*/}
+					<div id="app"> {/*This is the entry point of the application*/}
+						<div class="panel-overlay"></div> {/*This is used by F7 to either show or hide a panel*/}
+						<div class="panel panel-left panel-cover"> {/*This defines the left panel*/}
+							<Settings /> {/*Render/place the settings page here*/}
+						</div>
+						<div class="views"> {/*Here all views will be shown.*/}
 							<div class="view view-main">
-								<Header />
-								<div class="pages navbar-through toolbar-through">
+								<Header /> {/*Render/place the header component here (fixed throughout app)*/}
+								<div class="pages navbar-through toolbar-through"> {/*Here all the pages will be shown .*/}
 									<div data-page="day-forecast" class="page cached">
 										<div class="page-content">
-											<DayForecast />
+											<DayForecast />  {/*Render/place the day forecast page here*/}
 										</div>
 									</div>
 									<div data-page="index" class="page">
 										<div class="page-content">
-											<Sensors />
-											<Events />
+											<Sensors /> {/*Render/place the sensors components here*/}
+											<Events /> {/*Render/place the events components here*/}
 										</div>
 									</div>
 									<div data-page="week-forecast" class="page cached">
 										<div class="page-content">
-											<WeekForecast />
+											<WeekForecast /> {/*Render/place the week forecast page here*/}
 										</div>
 									</div>
 								</div>
-								<Footer />
+								<Footer /> {/*Render/place the footer component here (fixed throughout app)*/}
 							</div>
 						</div>
 					</div>
