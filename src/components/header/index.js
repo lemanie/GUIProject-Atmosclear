@@ -4,8 +4,8 @@ import style from './style';
 
 export default class Header extends Component {
 	render() {
+		//We create a navbar here (see https://framework7.io/docs/navbar.html )
 		return (
-			{/*We create a navbar here (see https://framework7.io/docs/navbar.html )*/}
 			<div class={"navbar " + style.navbar}>  {/*We add the navbar class but add an extra class to override some css rules for our design (see style.less)*/}
 				<div class="navbar-inner">
 					<div class="left">

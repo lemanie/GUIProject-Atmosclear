@@ -3,8 +3,8 @@ import style from './style';
 
 export default class Events extends Component {
 	render() {
+		//Here is where we setup our event swiper: https://framework7.io/docs/swiper.html
 		return (
-			{/*Here is where we setup our event swiper: https://framework7.io/docs/swiper.html*/}
 			<div class={'swiper-container ' + style.events}> {/*We add the swiper-container class but add an extra class to override some css rules for our design (see style.less)*/}
 				<div class="swiper-wrapper">
 					<div class={"swiper-slide " + style.event}> {/*We add the swiper-slide class to define one of the many slides but add an extra class to override some css rules for our design (see style.less)*/}

@@ -1,8 +1,40 @@
 import { h, Component } from 'preact';
 import style from './style';
 
+import Forecast from '../forecast';
+
 export default class DayForecast extends Component {
+
+	//length/size of array should be 7
+	state = {
+		data : []
+	};
+
+	componentDidMount() {
+		var all = [];
+		all.push(<Forecast desc="16:00" windSpeed="8mph" chanceRain="30%" cloudCoverage="2%" visibility="3miles" />);
+		all.push(<Forecast desc="17:00" windSpeed="8mph" chanceRain="30%" cloudCoverage="2%" visibility="3miles" />);
+		all.push(<Forecast desc="18:00" windSpeed="8mph" chanceRain="30%" cloudCoverage="2%" visibility="3miles" />);
+		all.push(<Forecast desc="19:00" windSpeed="8mph" chanceRain="30%" cloudCoverage="2%" visibility="3miles" />);
+		all.push(<Forecast desc="20:00" windSpeed="8mph" chanceRain="30%" cloudCoverage="2%" visibility="3miles" />);
+		all.push(<Forecast desc="21:00" windSpeed="8mph" chanceRain="30%" cloudCoverage="2%" visibility="3miles" />);
+		all.push(<Forecast desc="22:00" windSpeed="8mph" chanceRain="30%" cloudCoverage="2%" visibility="3miles" />);
+
+		var newData = this.state.data.concat([all]);
+		this.setState({
+			data: newData
+		});
+	}
+
 	render() {
+		var forecasts = this.state.data.map(function(data) {
+			return(
+				<div>
+					{data}
+				</div>
+			);
+		});
+
 		return (
 			<div class={style.dayForecast}>
 				<div class={"row " + style.headerrow}> {/*this row is the headerrow*/}
@@ -26,125 +58,7 @@ export default class DayForecast extends Component {
 						<span class={style.blockData}>Visibility Level</span>
 					</div>
 				</div>
-				<div class={"row " + style.bodyrow}> {/*wrap the body row*/}
-				  <div class={style.block + " " + style.col1}>
-						16:00 {/*hour of the day*/}
-				  </div>
-				  <div class={style.block + " " + style.col2}>
-						7mph {/*data for wind speed*/}
-				  </div>
-				  <div class={style.block + " " + style.col3}>
-						60% {/*data for rain*/}
-				  </div>
-				  <div class={style.block + " " + style.col4}>
-						70% {/*data for cloud coverage*/}
-				  </div>
-				  <div class={style.block + " " + style.col5}>
-						70% {/*data for visibility*/}
-				  </div>
-				</div>
-				<div class={"row " + style.bodyrow}>
-				  <div class={style.block + " " + style.col1}>
-					17:00
-				  </div>
-				  <div class={style.block + " " + style.col2}>
-					7mph
-				  </div>
-				  <div class={style.block + " " + style.col3}>
-					60%
-				  </div>
-				  <div class={style.block + " " + style.col4}>
-					70%
-				  </div>
-				  <div class={style.block + " " + style.col5}>
-					70%
-				  </div>
-				</div>
-				<div class={"row " + style.bodyrow}>
-				  <div class={style.block + " " + style.col1}>
-					18:00
-				  </div>
-				  <div class={style.block + " " + style.col2}>
-					7mph
-				  </div>
-				  <div class={style.block + " " + style.col3}>
-					60%
-				  </div>
-				  <div class={style.block + " " + style.col4}>
-					70%
-				  </div>
-				  <div class={style.block + " " + style.col5}>
-					70%
-				  </div>
-				</div>
-				<div class={"row " + style.bodyrow}>
-				  <div class={style.block + " " + style.col1}>
-					19:00
-				  </div>
-				  <div class={style.block + " " + style.col2}>
-					7mph
-				  </div>
-				  <div class={style.block + " " + style.col3}>
-					60%
-				  </div>
-				  <div class={style.block + " " + style.col4}>
-					70%
-				  </div>
-				  <div class={style.block + " " + style.col5}>
-					70%
-				  </div>
-				</div>
-				<div class={"row " + style.bodyrow}>
-				  <div class={style.block + " " + style.col1}>
-					20:00
-				  </div>
-				  <div class={style.block + " " + style.col2}>
-					7mph
-				  </div>
-				  <div class={style.block + " " + style.col3}>
-					60%
-				  </div>
-				  <div class={style.block + " " + style.col4}>
-					70%
-				  </div>
-				  <div class={style.block + " " + style.col5}>
-					70%
-				  </div>
-				</div>
-				<div class={"row " + style.bodyrow}>
-				  <div class={style.block + " " + style.col1}>
-					21:00
-				  </div>
-				  <div class={style.block + " " + style.col2}>
-					7mph
-				  </div>
-				  <div class={style.block + " " + style.col3}>
-					60%
-				  </div>
-				  <div class={style.block + " " + style.col4}>
-					70%
-				  </div>
-				  <div class={style.block + " " + style.col5}>
-					70%
-				  </div>
-				</div>
-				<div class={"row " + style.bodyrow}>
-				  <div class={style.block + " " + style.col1}>
-					22:00
-				  </div>
-				  <div class={style.block + " " + style.col2}>
-					7mph
-				  </div>
-				  <div class={style.block + " " + style.col3}>
-					60%
-				  </div>
-				  <div class={style.block + " " + style.col4}>
-					70%
-				  </div>
-				  <div class={style.block + " " + style.col5}>
-					70%
-				  </div>
-				</div>
+				{forecasts}
 			</div>
 		);
 	}
