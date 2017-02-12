@@ -5,7 +5,7 @@ import Forecast from '../forecast';
 
 export default class DayForecast extends Component {
 
-	//length/size of array should be 7
+	//length/size of data array should be 7
 	state = {
 		data : []
 	};
