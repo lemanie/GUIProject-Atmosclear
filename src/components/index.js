@@ -3,12 +3,15 @@ import { h, Component } from 'preact';
 import Header from './header'; // Import the header component
 import Footer from './footer'; // Import the footer component
 import Events from './events'; // Import the events component
-import Sensors from './sensors'; // Import the sensors component
+import Tile from './tile'; // Import the sensors component
 import Settings from './settings'; // Import the settings page
-import DayForecast from './dayforecast'; // Import the day forecast page (left)
-import WeekForecast from './weekforecast'; // Import the week forecast page (right)
+import DailyForecast from './dailyForecast'; // Import the day forecast page (left)
+import WeeklyForecast from './weeklyForecast'; // Import the week forecast page (right)
+import TableHeader from './tableHeader';
+import $ from 'jquery';
 
-export default class App extends Component {
+export default class App extends Component {	
+
 	render() {
 		return (
 			<div class="device-wrapper">
@@ -24,18 +27,33 @@ export default class App extends Component {
 								<div class="pages navbar-through toolbar-through"> {/*Here all the pages will be shown .*/}
 									<div data-page="day-forecast" class="page cached">
 										<div class="page-content">
-											<DayForecast />  {/*Render/place the day forecast page here*/}
+											<TableHeader />
+											<DailyForecast />
 										</div>
 									</div>
 									<div data-page="index" class="page">
 										<div class="page-content">
-											<Sensors /> {/*Render/place the sensors components here*/}
+											<div class = "row">
+												<Tile title="Cloud Cover"/>
+												<Tile title="Chance Of Rain"/>
+											</div>
+											<div class = "row">
+												<Tile title="Average Visibility"/>
+												<Tile title="Wind Speed"/>
+											</div>
+											<div class = "row">
+												<Tile title="Temperature"/>
+												<Tile title="Humidity"/>
+												<Tile title="Pressure"/>
+												<Tile title="Sunset Time"/>
+											</div>
 											<Events /> {/*Render/place the events components here*/}
 										</div>
 									</div>
 									<div data-page="week-forecast" class="page cached">
 										<div class="page-content">
-											<WeekForecast /> {/*Render/place the week forecast page here*/}
+											<TableHeader />
+											<WeeklyForecast />
 										</div>
 									</div>
 								</div>
