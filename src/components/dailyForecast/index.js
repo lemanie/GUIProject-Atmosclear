@@ -43,7 +43,7 @@ export default class DailyForecast extends Component {
 			timeNo++
 		}
 		var j;
-		for (j = 0; j < currentTime; j++){
+		for (j = 0; j <= currentTime; j++){
 			forecasts[i] = <Forecast 
 					desc={times[j]} 
 					windSpeed={parseInt(winSpe[j]) + " mph"}
@@ -55,7 +55,7 @@ export default class DailyForecast extends Component {
 
 		//all forecasts are then added into the page here
 		return (
-			<div>{forecasts[0]}{forecasts[1]}{forecasts[2]}{forecasts[3]}{forecasts[4]}{forecasts[5]}{forecasts[6]}</div>
+			<div>{forecasts[0]}{forecasts[1]}{forecasts[2]}{forecasts[3]}{forecasts[4]}{forecasts[5]}{forecasts[6]}{forecasts[7]}{forecasts[8]}{forecasts[9]}{forecasts[10]}{forecasts[11]}{forecasts[12]}{forecasts[13]}{forecasts[14]}{forecasts[15]}{forecasts[16]}{forecasts[17]}{forecasts[18]}{forecasts[19]}{forecasts[20]}{forecasts[21]}{forecasts[22]}{forecasts[23]}{forecasts[24]}</div>
 		);
 
 	}
