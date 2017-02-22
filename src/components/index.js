@@ -8,6 +8,8 @@ import Settings from './settings'; // Import the settings page
 import DailyForecast from './dailyForecast'; // Import the day forecast page (left)
 import WeeklyForecast from './weeklyForecast'; // Import the week forecast page (right)
 import TableHeader from './tableHeader';
+import Navigation from './navigation';
+import PageContent from './pageContent';
 import $ from 'jquery';
 
 export default class App extends Component {	
@@ -15,49 +17,29 @@ export default class App extends Component {
 	render() {
 		return (
 			<div class="device-wrapper">
-				<div class="device device-android">  {/*Create android feel around app*/}
-					<div id="app"> {/*This is the entry point of the application*/}
-						<div class="panel-overlay"></div> {/*This is used by F7 to either show or hide a panel*/}
-						<div class="panel panel-left panel-cover"> {/*This defines the left panel*/}
-							<Settings /> {/*Render/place the settings page here*/}
-						</div>
-						<div class="views"> {/*Here all views will be shown.*/}
+				<div class="device device-android"> 
+					<div id="app"> 
+						<div class="panel-overlay"></div>
+						<div class="panel panel-left panel-cover"><Settings /></div>
+						<div class="views">
 							<div class="view view-main">
-								<Header /> {/*Render/place the header component here (fixed throughout app)*/}
-								<div class="pages navbar-through toolbar-through"> {/*Here all the pages will be shown .*/}
-									<div data-page="day-forecast" class="page cached">
-										<div class="page-content">
-											<TableHeader />
-											<DailyForecast />
+								<div class="pages">
+									<div class="pages navbar-through toolbar-through">
+										<Header /> 
+										<div class="page" data-page="index" class="page">
+											<PageContent title="index"/>
+											<Footer />
 										</div>
-									</div>
-									<div data-page="index" class="page">
-										<div class="page-content">
-											<div class = "row">
-												<Tile title="Cloud Cover"/>
-												<Tile title="Chance Of Rain"/>
-											</div>
-											<div class = "row">
-												<Tile title="Average Visibility"/>
-												<Tile title="Wind Speed"/>
-											</div>
-											<div class = "row">
-												<Tile title="Temperature"/>
-												<Tile title="Humidity"/>
-												<Tile title="Pressure"/>
-												<Tile title="Sunset Time"/>
-											</div>
-											<Events /> {/*Render/place the events components here*/}
+	        							<div class="page" data-page="day-forecast" class="page cached">
+											<PageContent title="day-forecast"/>
+											<Footer />
 										</div>
-									</div>
-									<div data-page="week-forecast" class="page cached">
-										<div class="page-content">
-											<TableHeader />
-											<WeeklyForecast />
+										<div class="page" data-page="week-forecast" class="page cached">
+											<PageContent title="week-forecast"/>
+											<Footer />
 										</div>
 									</div>
 								</div>
-								<Footer /> {/*Render/place the footer component here (fixed throughout app)*/}
 							</div>
 						</div>
 					</div>
@@ -65,4 +47,5 @@ export default class App extends Component {
 			</div>
 		);
 	}
+	
 }

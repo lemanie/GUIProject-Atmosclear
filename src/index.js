@@ -19,6 +19,7 @@ function init() {
 		domCache : true
 	});
 
+
 	// Init slider and store its instance in mySwiper variable
 	var mySwiper = myApp.swiper('.swiper-container'); // should this be done in the events component? would be neater
 }

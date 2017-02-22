@@ -12,7 +12,7 @@ export default class WeeklyForecast extends Component {
 
 	// a call to fetch weather data via darkSky
 	fetchWeatherData = () => {
-		var url = "https://api.darksky.net/forecast/8f2d162461ba59ec401b6221fa72101e/51.528308,-0.3817765?units=uk2";
+		var url = "https://api.darksky.net/forecast/f05da644e41b3ffb3377f5cfc3aacc63/51.528308,-0.3817765?units=uk2";
 		$.ajax({
 			url: url,
 			dataType: "jsonp",
