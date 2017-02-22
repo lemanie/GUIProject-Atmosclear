@@ -16,7 +16,11 @@ function init() {
 	// Add one view (see index.js to see where the main view is defined)
 	var mainView = myApp.addView('.view-main', {
 		dynamicNavbar : true,
-		domCache : true
+		domCache : true,
+		fastClicks: true,
+		activeState: true,
+		activeStateElements: true,
+		animatePages: false,
 	});
 
 

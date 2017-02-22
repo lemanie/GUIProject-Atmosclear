@@ -14,9 +14,9 @@ export default class Footer extends Component {
 		return (
 			<div class={"toolbar " + style.footer}> {/*We add the toolbar class but add an extra class to override some css rules for our design (see style.less)*/}
 				<div class="toolbar-inner">
-					<Navigation title ="#day-forecast" pageNo='0' />
-					<Navigation title ="#index" pageNo='1' />
-					<Navigation title ="#week-forecast" pageNo='2'/>
+					<Navigation title ="#day-forecast" />
+					<Navigation title ="#index" />
+					<Navigation title ="#week-forecast" />
 				</div>
 			</div>
 		);
