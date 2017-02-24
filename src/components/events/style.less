@@ -1,61 +1,39 @@
-:global(.day) .events {
-	background: none;
-	background-image: url(/assets/img/background-events-day.jpg);
-	background-size: cover;
-	background-position: center bottom;
-	
-	text-align: center;
-	
-	height:136px;
-	
-	.event {
-		padding: 1em;
-		
-		.eventDate {
-			color: white;
-			display: block;
-			font-weight: bold;
-		}
-		
-		.eventTitle {
-			display: block;
-			color: white;
-		}
-		
-		.eventDescription {
-			display: block;
-			color: white;
-		}
-	}
-}
+:global(.day) .event {
+		padding: 0px 30px 40px 0px;
 
-:global(.night) .events {
-	background: none;
-	background-image: url(/assets/img/background-events-night.jpg);
-	background-size: cover;
-	background-position: center bottom;
-	
-	text-align: center;
-	
-	height:136px;
-	
-	.event {
-		padding: 1em;
-		
 		.eventDate {
-			color: red;
+			color: white;
 			display: block;
 			font-weight: bold;
 		}
-		
+
 		.eventTitle {
 			display: block;
-			color: red;
+			color: white;
 		}
-		
+
 		.eventDescription {
 			display: block;
-			color: red;
+			color: white;
 		}
 	}
-}
+
+:global(.night) .event {
+		padding: 0px 30px 40px 0px;
+		
+		.eventDate {
+			color: white;
+			display: block;
+			font-weight: bold;
+		}
+
+		.eventTitle {
+			display: block;
+			color: white;
+		}
+
+		.eventDescription {
+			display: block;
+			color: white;
+		}
+	}

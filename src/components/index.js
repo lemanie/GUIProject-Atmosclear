@@ -3,6 +3,7 @@ import { h, Component } from 'preact';
 import Header from './header'; // Import the header component
 import Footer from './footer'; // Import the footer component
 import Events from './events'; // Import the events component
+import EventHandler from './eventHandler';
 import Tile from './tile'; // Import the sensors component
 import Settings from './settings'; // Import the settings page
 import DailyForecast from './dailyForecast'; // Import the day forecast page (left)

@@ -5,6 +5,8 @@ import Tile from '../tile'; // Import the sensors component
 import DailyForecast from '../dailyForecast'; // Import the day forecast page (left)
 import WeeklyForecast from '../weeklyForecast'; // Import the week forecast page (right)
 import TableHeader from '../tableHeader';
+import EventHandler from '../eventHandler';
+
 import $ from 'jquery';// import jquery for API calls
 
 export default class PageContent extends Component {
@@ -37,7 +39,7 @@ export default class PageContent extends Component {
   									<Tile title="Pressure"/>
   									<Tile title="Sunset Time"/>
   								</div>
-  								<Events />
+  								<EventHandler count="3" />
   							</div>);
 	  			break;
 	  		case "week-forecast":
