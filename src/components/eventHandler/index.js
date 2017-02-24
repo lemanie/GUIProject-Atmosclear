@@ -44,7 +44,7 @@ export default class EventHandler extends Component {
     for(i=0; i<count; i++){
         var str = "" + eveDescs[i];
         var k = str.indexOf(".");
-        var strSub = str.substring(0, k);
+        var strSub = str.substring(0, k+1);
         events[i] = <Event eventDate={eveDates[i]} eventName={eveNames[i]} eventDesc={strSub}/>;
       }
     return(
