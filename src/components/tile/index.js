@@ -11,7 +11,7 @@ export default class Tile extends Component {
 
 	// a call to fetch weather data via darkSky
 	fetchWeatherData = () => {
-		var url = "https://api.darksky.net/forecast/9211576f6b204ec1c8eb8dde7bbcfdaa/51.528308,-0.3817765?units=uk2";
+		var url = "https://api.darksky.net/forecast/3df2c1403513f17a7382cefcb7ed72f6/51.528308,-0.3817765?units=uk2";
 		$.ajax({
 			url: url,
 			dataType: "jsonp",
@@ -34,35 +34,35 @@ export default class Tile extends Component {
   				this.props.top = true;
 	  			this.props.colour = "shade2";
   				this.props.icon = "rain";
-	  			return this.state.chanceOfRain*100 + "%"; 
+	  			return parseInt(this.state.chanceOfRain*100) + "%"; 
 	  			break;
 	  		case "Average Visibility":
 	  			this.props.large = true;
   				this.props.top = false;
 	  			this.props.colour = "shade4";
   				this.props.icon = "dust";
-	  			return this.state.visibility + " mi"; 
+	  			return parseInt(this.state.visibility) + " mi"; 
 	  			break;
 			case "Wind Speed":
 				this.props.large = true;
   				this.props.top = false;
 				this.props.colour = "shade1";
   				this.props.icon = "strong-wind";
-	  			return this.state.windspeed + " mph"; 
+	  			return parseInt(this.state.windspeed) + " mph"; 
 	  			break;
 	  		case "Temperature":
 	  			this.props.large = false;
   				this.props.top = false;
 	  			this.props.colour = "shade1";
   				this.props.icon = "thermometer";
-	  			return this.state.tempurature + "'C"; 
+	  			return parseInt(this.state.tempurature) + "'C"; 
 	  			break;
 	  		case "Humidity":
 	  			this.props.large = false;
   				this.props.top = false;
 	  			this.props.colour = "shade2";
   				this.props.icon = "humidity";
-	  			return this.state.humidity*100 + "%"; 
+	  			return parseInt(this.state.humidity*100) + "%"; 
 	  			break;
 			case "Pressure":
 				this.props.large = false;
