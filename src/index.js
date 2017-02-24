@@ -13,6 +13,8 @@ function init() {
 		root : "#app" //where does the app start, at the div with #app as id
 	});
 
+	var $$ = Dom7;
+
 	// Add one view (see index.js to see where the main view is defined)
 	var mainView = myApp.addView('.view-main', {
 		dynamicNavbar : true,
@@ -23,9 +25,9 @@ function init() {
 		animatePages: false,
 	});
 
-
 	// Init slider and store its instance in mySwiper variable
 	var mySwiper = myApp.swiper('.swiper-container'); // should this be done in the events component? would be neater
+
 }
 
 // register ServiceWorker via OfflinePlugin, for prod only:

@@ -1,5 +1,4 @@
 import { h, Component } from 'preact';
-import style from './style';
 import Forecast from '../forecast';
 import $ from 'jquery'; // import jquery for API calls
 
@@ -12,7 +11,7 @@ export default class WeeklyForecast extends Component {
 
 	// a call to fetch weather data via darkSky
 	fetchWeatherData = () => {
-		var url = "https://api.darksky.net/forecast/c5dcaf2cd8a51e0ab6efa41c835a9088/51.528308,-0.3817765?units=uk2";
+		var url = "https://api.darksky.net/forecast/9211576f6b204ec1c8eb8dde7bbcfdaa/51.528308,-0.3817765?units=uk2";
 		$.ajax({
 			url: url,
 			dataType: "jsonp",
