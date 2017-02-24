@@ -12,33 +12,46 @@ import Navigation from './navigation';
 import PageContent from './pageContent';
 import $ from 'jquery';
 
-export default class App extends Component {	
+export default class App extends Component {
+	constructor() {
+		super();
+		this.setState({
+			selected: 'index',
+			mode: 'day'
+		});
+	}
 
 	render() {
 		return (
+			
 			<div class="device-wrapper">
 				<div class="device device-android"> 
-					<div id="app"> 
+					<div id="app" class={`framework7-root ${this.state.selected} ${this.state.mode}`}> 
 						<div class="panel-overlay"></div>
 						<div class="panel panel-left panel-cover"><Settings /></div>
 						<div class="views">
 							<div class="view view-main">
 								<div class="pages">
 									<div class="pages navbar-through toolbar-through">
-										<Header /> 
-										<div class="page" data-page="index" class="page">
-											<PageContent title="index"/>
-											<Footer />
+										<Header onModeChange={mode => this.setState({...this.state, mode})} /> 
+										<div>
+		        							<div data-page="day-forecast" class={`page ${this.state.selected !== 'day-forecast' ? 'cached' : ''}`}>
+												<PageContent title="day-forecast"/>
+												<Footer selected={this.state.selected} onSelectionChange={selected => this.setState({...this.state, selected})} />
+											</div>
+
+											<div data-page="week-forecast" class={`page ${this.state.selected !== 'week-forecast' ? 'cached' : ''}`}>
+												<PageContent title="week-forecast"/>
+												<Footer selected={this.state.selected} onSelectionChange={selected => this.setState({...this.state, selected})} />
+											</div>
+
+											<div data-page="index" class={`page ${this.state.selected !== 'index' ? 'cached' : ''}`}>
+												<PageContent title="index"/>
+												<Footer selected={this.state.selected} onSelectionChange={selected => this.setState({...this.state, selected})} />
+											</div>
 										</div>
-	        							<div class="page" data-page="day-forecast" class="page cached">
-											<PageContent title="day-forecast"/>
-											<Footer />
-										</div>
-										<div class="page" data-page="week-forecast" class="page cached">
-											<PageContent title="week-forecast"/>
-											<Footer />
-										</div>
-									</div>
+
+x									</div>
 								</div>
 							</div>
 						</div>

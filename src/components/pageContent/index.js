@@ -5,7 +5,6 @@ import Tile from '../tile'; // Import the sensors component
 import DailyForecast from '../dailyForecast'; // Import the day forecast page (left)
 import WeeklyForecast from '../weeklyForecast'; // Import the week forecast page (right)
 import TableHeader from '../tableHeader';
-import style from './style';
 import $ from 'jquery';// import jquery for API calls
 
 export default class PageContent extends Component {
@@ -54,5 +53,12 @@ export default class PageContent extends Component {
 
 	render() {
 		return (this.selectData(this.props.title));
+	}
+
+	parseResponse = (parsed_json) => {
+		this.setState({ 
+				latitude: parsed_json['latitude'],
+				longitude: '0',
+			});
 	}
 }

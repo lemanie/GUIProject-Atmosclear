@@ -1,4 +1,4 @@
-.tableHeader {
+:global(.day) .tableHeader {
 	margin-top: 56px;
 	height: 66px;
 	text-align: center;
@@ -20,6 +20,51 @@
 	}
 	.shade4 {
 		background-color: #5D5D83;
+	}
+
+	.block {
+		display: block; 
+		float: left;
+		width: 20%;
+		height: 100%;
+		padding-left: 3px;
+		padding-right: 3px;
+
+		-webkit-box-shadow: inset 0px 0px 3px 1px rgba(255,255,255,0.2);
+		-moz-box-shadow: inset 0px 0px 3px 1px rgba(255,255,255,0.2);
+		-box-shadow: inset 0px 0px 3px 1px rgba(255,255,255,0.2);
+	}
+
+	.icon {
+		padding-top: 7px;
+		display: block;
+		font-size: 1.6em;
+	}
+
+}
+
+:global(.night) .tableHeader {
+	margin-top: 56px;
+	height: 66px;
+	text-align: center;
+	color: red;
+	font-weight: bold;
+	font-size: 0.9em;
+
+	.shade0 {
+		background-color: black;
+	}
+	.shade1 {
+		background-color: black;
+	}
+	.shade2 {
+		background-color: black;
+	}
+	.shade3 {
+		background-color: black;
+	}
+	.shade4 {
+		background-color: black;
 	}
 
 	.block {

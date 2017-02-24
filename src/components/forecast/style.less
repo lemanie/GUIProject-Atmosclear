@@ -1,4 +1,4 @@
-.bodyrow {
+:global(.day) .bodyrow {
 	.block {
 		display: block; float: left;
 		text-align: center;
@@ -30,6 +30,46 @@
 	.col5 {
 		display: block; float: left;
 		background-color: #5D5D83;
+	}
+
+	.block {
+		padding-top: 14px;
+		height: 50px;
+	}
+}
+
+:global(.night) .bodyrow {
+	.block {
+		display: block; float: left;
+		text-align: center;
+		color: red;
+		width: 20%;
+
+		-webkit-box-shadow: inset 0px 0px 3px 1px rgba(255,255,255,0.2);
+		-moz-box-shadow: inset 0px 0px 3px 1px rgba(255,255,255,0.2);
+		box-shadow: inset 0px 0px 3px 1px rgba(255,255,255,0.2);
+	}
+
+	.col1 {
+		background-color: black;
+		font-weight: bold;
+		font-size: 0.8em;
+	}
+	.col2 {
+		display: block; float: left;
+		background-color: black;
+	}
+	.col3 {
+		display: block; float: left;
+		background-color: black;
+	}
+	.col4 {
+		display: block; float: left;
+		background-color: black;
+	}
+	.col5 {
+		display: block; float: left;
+		background-color: black;
 	}
 
 	.block {

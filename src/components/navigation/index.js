@@ -9,15 +9,12 @@ export default class Navigation extends Component {
 	selectData(title) {
   		switch(title) {
   			case "#day-forecast":
-  				this.props.pageCacheStatus = false;
   				this.props.icon = "alarm";
   				break; 
 	  		case "#index":
-	  			this.props.pageCacheStatus = true;
   				this.props.icon = "home";
   				break;
 			case "#week-forecast":
-				this.props.pageCacheStatus = false;
   				this.props.icon = "event";
   				break;
 			default:		
@@ -31,11 +28,11 @@ export default class Navigation extends Component {
 			<div class={`
 				${style.navigation} 				
 			`}>
-				<a href={this.props.title} class="link">
-					<i class={`
+				<a href={this.props.title} class="link" onClick={() => this.props.onClick()}>
+					<i class={`"icon"
 						material-icons
-						${this.props.pageCacheStatus == true ? style.iconOnPage : style.iconOffPage}
-					`}>
+						${this.props.selected ? style.iconSelected : style.iconNotSelected}
+					`} >
 						{this.props.icon}
 					</i>
 				</a>
@@ -44,4 +41,3 @@ export default class Navigation extends Component {
 	}	
 }
 
-{/*${{App.views.main.activePage.name} == {this.props.title}  ? style.iconOnPage : style.iconOffPage}*/}

@@ -1,6 +1,6 @@
-.events {
+:global(.day) .events {
 	background: none;
-	background-image: url(/assets/img/background-events.jpg);
+	background-image: url(/assets/img/background-events-day.jpg);
 	background-size: cover;
 	background-position: center bottom;
 	
@@ -25,6 +25,37 @@
 		.eventDescription {
 			display: block;
 			color: white;
+		}
+	}
+}
+
+:global(.night) .events {
+	background: none;
+	background-image: url(/assets/img/background-events-night.jpg);
+	background-size: cover;
+	background-position: center bottom;
+	
+	text-align: center;
+	
+	height:136px;
+	
+	.event {
+		padding: 1em;
+		
+		.eventDate {
+			color: red;
+			display: block;
+			font-weight: bold;
+		}
+		
+		.eventTitle {
+			display: block;
+			color: red;
+		}
+		
+		.eventDescription {
+			display: block;
+			color: red;
 		}
 	}
 }

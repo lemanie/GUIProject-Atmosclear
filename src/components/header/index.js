@@ -3,6 +3,21 @@ import { Link } from 'preact-router';
 import style from './style';
 
 export default class Header extends Component {
+	constructor() {
+		super();
+		this.setState({
+			mode: 'day'
+		});
+	}
+	changeMode() {
+		if (this.state.mode === 'day') {
+			this.setState({...this.state, mode: 'night'})
+			this.props.onModeChange('night')
+		} else {
+			this.setState({...this.state, mode: 'day'})
+			this.props.onModeChange('day')
+		}
+	}
 	render() {
 		//We create a navbar here (see https://framework7.io/docs/navbar.html )
 		return (
@@ -13,7 +28,7 @@ export default class Header extends Component {
 					</div>
 					<div class="center sliding">Atmosclear</div> {/*App title here*/}
 					<div class="right">
-						<a href="#" class="link icon-only"><i class="material-icons">brightness_4</i></a> {/*This is an icon wrapped with a link tag that should be used to switch on night mode*/}
+						<a href="#" class="link icon-only" onClick={() => this.changeMode()}><i class="material-icons">brightness_4</i></a> {/*This is an icon wrapped with a link tag that should be used to switch on night mode*/}
 					</div>
 				</div>
 			</div>

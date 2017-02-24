@@ -22,7 +22,6 @@ export default class DailyForecast extends Component {
 	}
 
 	render() {
-		var geoloc = new Geolocation();
 		var times = ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"];
 		var winSpe = [this.state.wS0, this.state.wS1, this.state.wS2, this.state.wS3, this.state.wS4, this.state.wS5, this.state.wS6, this.state.wS7, this.state.wS8, this.state.wS9, this.state.wS10, this.state.wS11, this.state.wS12, this.state.wS13, this.state.wS14, this.state.wS15, this.state.wS16, this.state.wS17, this.state.wS18, this.state.wS19, this.state.wS20, this.state.wS21, this.state.wS22, this.state.wS23,];
 		var chaRai = [this.state.cR0, this.state.cR1, this.state.cR2, this.state.cR3, this.state.cR4, this.state.cR5, this.state.cR6, this.state.cR7, this.state.cR8, this.state.cR9, this.state.cR10, this.state.cR11, this.state.cR12, this.state.cR13, this.state.cR14, this.state.cR15, this.state.cR16, this.state.cR17, this.state.cR18, this.state.cR19, this.state.cR20, this.state.cR21, this.state.cR22, this.state.cR23,];

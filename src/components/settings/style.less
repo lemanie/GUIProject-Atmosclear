@@ -1,4 +1,4 @@
-.contentBlock {
+:global(.day) .contentBlock {
 	height: 100%;
 	background-color: #BCB3D0;
 	margin-top: 0;
@@ -19,6 +19,36 @@
 			padding: 15px;
 			font-size: 1.3em;
 			color: white;
+		}
+		
+		.itemInput {
+			float: right;
+			padding: 5px;
+		}
+	}
+}
+
+:global(.night) .contentBlock {
+	height: 100%;
+	background-color: black;
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+	
+	#notifications {
+		display: block;
+		height: 56px;
+		padding-left: 15px;
+		padding-right: 15px;
+		
+		background-color: black;
+		
+		.itemTitle {
+			float: left;
+			padding: 15px;
+			font-size: 1.3em;
+			color: red;
 		}
 		
 		.itemInput {
