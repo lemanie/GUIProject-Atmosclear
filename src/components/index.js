@@ -10,7 +10,6 @@ import DailyForecast from './dailyForecast'; // Import the day forecast page (le
 import WeeklyForecast from './weeklyForecast'; // Import the week forecast page (right)
 import TableHeader from './tableHeader';
 import Navigation from './navigation';
-import PageContent from './pageContent';
 import $ from 'jquery';
 
 export default class App extends Component {
@@ -33,29 +32,29 @@ export default class App extends Component {
 						<div class="views">
 							<div class="view view-main">
 								<div class="pages">
-									<div class="pages navbar-through toolbar-through">
-										<Header 
-										  onModeChange={mode => this.setState({...this.state, mode})} /> 
+									<div class="pages navbar-through toolbar-through"
+									 onModeChange={mode => this.setState({...this.state, mode})} >
+										<Header /> 
 	        							<div data-page="day-forecast"
 	        							  class={`page ${this.state.selected!=='day-forecast' ? 'cached' : ''}`}>
-											<PageContent 
-											  title="day-forecast" apiKey={APIKEY}/>
+											<TableHeader />
+  											<DailyForecast apiKey={this.props.apiKey}/>
 											<Footer 
 											  selected={this.state.selected} 
 											  onSelectionChange={selected => this.setState({...this.state, selected})} />
 										</div>
-										<div data-page="week-forecast"
-										  class={`page ${this.state.selected!=='week-forecast' ? 'cached' : ''}`}>
-											<PageContent
-											  title="week-forecast" apiKey={APIKEY}/>
+										<div data-page="index"
+										 class={`page ${this.state.selected !== 'index' ? 'cached' : ''}`}>
+											<Tile apiKey={this.props.apiKey}/>
+  											<EventHandler count="3" />
 											<Footer
 											  selected={this.state.selected}
 											  onSelectionChange={selected => this.setState({...this.state, selected})} />
 										</div>
-										<div data-page="index"
-										 class={`page ${this.state.selected !== 'index' ? 'cached' : ''}`}>
-											<PageContent
-											  title="index" apiKey={APIKEY}/>
+										<div data-page="week-forecast"
+										  class={`page ${this.state.selected!=='week-forecast' ? 'cached' : ''}`}>
+											<TableHeader />
+											<WeeklyForecast apiKey={this.props.apiKey}/>
 											<Footer
 											  selected={this.state.selected}
 											  onSelectionChange={selected => this.setState({...this.state, selected})} />
