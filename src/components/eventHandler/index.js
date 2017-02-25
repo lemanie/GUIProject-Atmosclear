@@ -48,7 +48,7 @@ export default class EventHandler extends Component {
         events[i] = <Event eventDate={eveDates[i]} eventName={eveNames[i]} eventDesc={strSub}/>;
       }
     return(
-      <div class={'swiper-container ' + style.eventHandler}>
+      <div class={"swiper-container swiper-init " + style.eventHandler}>
         <div class={"swiper-wrapper " + style.event}>
         {events[0]}{events[1]}{events[2]}
         </div>
