@@ -22,7 +22,9 @@ export default class App extends Component {
 	}
 
 	render() {
-		var APIKEY = "" + "7b6d8e69d25dce28fdd188d2181f46ad";
+		var APIKEY = "" + "789ca30671f514e40bdee5c11f1601ed";
+		var LATITUDE = "" + "51.528308";
+		var LONGITUDE = "" + "-0.3817765";
 		return (
 			<div class="device-wrapper">
 				<div class="device device-android"> 
@@ -32,20 +34,19 @@ export default class App extends Component {
 						<div class="views">
 							<div class="view view-main">
 								<div class="pages">
-									<div class="pages navbar-through toolbar-through"
-									 onModeChange={mode => this.setState({...this.state, mode})} >
-										<Header /> 
+									<div class="pages navbar-through toolbar-through">
+										<Header onModeChange={mode => this.setState({...this.state, mode})}/> 
 	        							<div data-page="day-forecast"
 	        							  class={`page ${this.state.selected!=='day-forecast' ? 'cached' : ''}`}>
 											<TableHeader />
-  											<DailyForecast apiKey={this.props.apiKey}/>
+  											<DailyForecast apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
 											<Footer 
 											  selected={this.state.selected} 
 											  onSelectionChange={selected => this.setState({...this.state, selected})} />
 										</div>
 										<div data-page="index"
 										 class={`page ${this.state.selected !== 'index' ? 'cached' : ''}`}>
-											<Tile apiKey={this.props.apiKey}/>
+											<Tile apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
   											<EventHandler count="3" />
 											<Footer
 											  selected={this.state.selected}
@@ -54,7 +55,7 @@ export default class App extends Component {
 										<div data-page="week-forecast"
 										  class={`page ${this.state.selected!=='week-forecast' ? 'cached' : ''}`}>
 											<TableHeader />
-											<WeeklyForecast apiKey={this.props.apiKey}/>
+											<WeeklyForecast apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
 											<Footer
 											  selected={this.state.selected}
 											  onSelectionChange={selected => this.setState({...this.state, selected})} />

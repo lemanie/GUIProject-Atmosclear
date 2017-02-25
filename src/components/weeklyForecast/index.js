@@ -12,8 +12,8 @@ export default class WeeklyForecast extends Component {
 	// a call to fetch weather data via darkSky
 	fetchWeatherData = () => {
 		var apiKey = "" + this.props.apiKey;
-		var latitude = "" + "51.528308";
-		var longitude = "" + "-0.3817765";
+		var latitude = "" + this.props.lat;
+		var longitude = "" + this.props.lon;
 		var url = "https://api.darksky.net/forecast/" + apiKey + "/" + latitude + "," + longitude + "?units=uk2";
 		$.ajax({
 			url: url,
