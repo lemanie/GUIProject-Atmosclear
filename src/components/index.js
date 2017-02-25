@@ -23,8 +23,8 @@ export default class App extends Component {
 	}
 
 	render() {
+		var APIKEY = "" + "7b6d8e69d25dce28fdd188d2181f46ad";
 		return (
-			
 			<div class="device-wrapper">
 				<div class="device device-android"> 
 					<div id="app" class={`framework7-root ${this.state.selected} ${this.state.mode}`}> 
@@ -34,25 +34,33 @@ export default class App extends Component {
 							<div class="view view-main">
 								<div class="pages">
 									<div class="pages navbar-through toolbar-through">
-										<Header onModeChange={mode => this.setState({...this.state, mode})} /> 
-										<div>
-		        							<div data-page="day-forecast" class={`page ${this.state.selected !== 'day-forecast' ? 'cached' : ''}`}>
-												<PageContent title="day-forecast"/>
-												<Footer selected={this.state.selected} onSelectionChange={selected => this.setState({...this.state, selected})} />
-											</div>
-
-											<div data-page="week-forecast" class={`page ${this.state.selected !== 'week-forecast' ? 'cached' : ''}`}>
-												<PageContent title="week-forecast"/>
-												<Footer selected={this.state.selected} onSelectionChange={selected => this.setState({...this.state, selected})} />
-											</div>
-
-											<div data-page="index" class={`page ${this.state.selected !== 'index' ? 'cached' : ''}`}>
-												<PageContent title="index"/>
-												<Footer selected={this.state.selected} onSelectionChange={selected => this.setState({...this.state, selected})} />
-											</div>
+										<Header 
+										  onModeChange={mode => this.setState({...this.state, mode})} /> 
+	        							<div data-page="day-forecast"
+	        							  class={`page ${this.state.selected!=='day-forecast' ? 'cached' : ''}`}>
+											<PageContent 
+											  title="day-forecast" apiKey={APIKEY}/>
+											<Footer 
+											  selected={this.state.selected} 
+											  onSelectionChange={selected => this.setState({...this.state, selected})} />
 										</div>
-
-x									</div>
+										<div data-page="week-forecast"
+										  class={`page ${this.state.selected!=='week-forecast' ? 'cached' : ''}`}>
+											<PageContent
+											  title="week-forecast" apiKey={APIKEY}/>
+											<Footer
+											  selected={this.state.selected}
+											  onSelectionChange={selected => this.setState({...this.state, selected})} />
+										</div>
+										<div data-page="index"
+										 class={`page ${this.state.selected !== 'index' ? 'cached' : ''}`}>
+											<PageContent
+											  title="index" apiKey={APIKEY}/>
+											<Footer
+											  selected={this.state.selected}
+											  onSelectionChange={selected => this.setState({...this.state, selected})} />
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

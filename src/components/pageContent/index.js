@@ -19,33 +19,20 @@ export default class PageContent extends Component {
   		switch(title) {
   			case "day-forecast":
   				return (<div class="page-content">
-  								<TableHeader />
-  								<DailyForecast />
-  							</div>);
+  							<TableHeader />
+  							<DailyForecast apiKey={this.props.apiKey}/>
+  						</div>);
 	  			break;
 	  		case "index":
   				return (<div class="page-content">
-								<div class = "row">
-									<Tile title="Cloud Cover"/>
-									<Tile title="Chance Of Rain"/>
-								</div>
-  								<div class = "row">
-  									<Tile title="Average Visibility"/>
-  									<Tile title="Wind Speed"/>
-  								</div>
-  								<div class = "row">
-  									<Tile title="Temperature"/>
-  									<Tile title="Humidity"/>
-  									<Tile title="Pressure"/>
-  									<Tile title="Sunset Time"/>
-  								</div>
-  								<EventHandler count="3" />
-  							</div>);
+  							<Tile apiKey={this.props.apiKey}/>
+  							<EventHandler count="3" />
+  						</div>);
 	  			break;
 	  		case "week-forecast":
   				return (<div class="page-content">
 							<TableHeader />
-							<WeeklyForecast />
+							<WeeklyForecast apiKey={this.props.apiKey}/>
 						</div>);
 	  			break;
 	  		default:
