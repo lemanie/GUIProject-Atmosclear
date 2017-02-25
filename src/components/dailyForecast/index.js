@@ -26,8 +26,8 @@ export default class DailyForecast extends Component {
 
 	render() {
 		var times = ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00","00:00", "01:00", "02:00",];
-		var winSpe = [this.state.wS0, this.state.wS1, this.state.wS2, this.state.wS3, this.state.wS4, this.state.wS5, this.state.wS6, this.state.wS7, this.state.wS8, this.state.wS9, this.state.wS10, this.state.wS11, this.state.wS12, this.state.wS13, this.state.wS14, this.state.wS15, this.state.wS16, this.state.wS17, this.state.wS18, this.state.wS19, this.state.wS20, this.state.wS21, this.state.wS22, this.state.wS23,this.state.wS24, this.state.wS25, this.state.wS26,];
-		var chaRai = [this.state.cR0, this.state.cR1, this.state.cR2, this.state.cR3, this.state.cR4, this.state.cR5, this.state.cR6, this.state.cR7, this.state.cR8, this.state.cR9, this.state.cR10, this.state.cR11, this.state.cR12, this.state.cR13, this.state.cR14, this.state.cR15, this.state.cR16, this.state.cR17, this.state.cR18, this.state.cR19, this.state.cR20, this.state.cR21, this.state.cR22, this.state.cR23,this.state.cR24, this.state.cR25, this.state.cR26,];
+		var winSpe = [this.state.wS0, this.state.wS1, this.state.wS2, this.state.wS3, this.state.wS4, this.state.wS5, this.state.wS6, this.state.wS7, this.state.wS8, this.state.wS9, this.state.wS10, this.state.wS11, this.state.wS12, this.state.wS13, this.state.wS14, this.state.wS15, this.state.wS16, this.state.wS17, this.state.wS18, this.state.wS19, this.state.wS20, this.state.wS21, this.state.wS22, this.state.wS23, this.state.wS24, this.state.wS25, this.state.wS26,];
+		var chaRai = [this.state.cR0, this.state.cR1, this.state.cR2, this.state.cR3, this.state.cR4, this.state.cR5, this.state.cR6, this.state.cR7, this.state.cR8, this.state.cR9, this.state.cR10, this.state.cR11, this.state.cR12, this.state.cR13, this.state.cR14, this.state.cR15, this.state.cR16, this.state.cR17, this.state.cR18, this.state.cR19, this.state.cR20, this.state.cR21, this.state.cR22, this.state.cR23, this.state.cR24, this.state.cR25, this.state.cR26,];
 		var cloCov = [this.state.cC0, this.state.cC1, this.state.cC2, this.state.cC3, this.state.cC4, this.state.cC5, this.state.cC6, this.state.cC7, this.state.cC8, this.state.cC9, this.state.cC10, this.state.cC11, this.state.cC12, this.state.cC13, this.state.cC14, this.state.cC15, this.state.cC16, this.state.cC17, this.state.cC18, this.state.cC19, this.state.cC20, this.state.cC21, this.state.cC22, this.state.cC23, this.state.cC24, this.state.cC25, this.state.cC26,];
 		var vis = [this.state.v0, this.state.v1, this.state.v2, this.state.v3, this.state.v4, this.state.v5, this.state.v6, this.state.v7, this.state.v8, this.state.v9, this.state.v10, this.state.v11, this.state.v12, this.state.v13, this.state.v14, this.state.v15, this.state.v16, this.state.v17, this.state.v18, this.state.v19, this.state.v20, this.state.v21, this.state.v22, this.state.v23, this.state.v24, this.state.v25, this.state.v26,];
 
@@ -58,7 +58,7 @@ export default class DailyForecast extends Component {
 
 		//all forecasts are then added into the page here
 		return (
-			<div class="swiper-container swiper-init" data-pagination=".swiper-vertical .swiper-pagination" data-direction="vertical" data-space-between="0">
+			<div class="swiper-container swiper-init" data-pagination=".swiper-pagination" data-direction="vertical" data-space-between="0">
 			 	<div class="swiper-wrapper ">
 			 		<div class="swiper-slide">
 			 			{forecasts[0]}{forecasts[1]}{forecasts[2]}{forecasts[3]}{forecasts[4]}{forecasts[5]}{forecasts[6]}
@@ -201,20 +201,20 @@ export default class DailyForecast extends Component {
 				cC23: [parsed_json['hourly']['data'][23]['cloudCover']],
 				v23: [parsed_json['hourly']['data'][23]['visibility']],
 
-				wS24: [parsed_json['hourly']['data'][21]['windSpeed']],
-				cR24: [parsed_json['hourly']['data'][21]['precipProbability']], 
-				cC24: [parsed_json['hourly']['data'][21]['cloudCover']],
-				v24: [parsed_json['hourly']['data'][21]['visibility']],
+				wS24: [parsed_json['hourly']['data'][24]['windSpeed']],
+				cR24: [parsed_json['hourly']['data'][24]['precipProbability']], 
+				cC24: [parsed_json['hourly']['data'][24]['cloudCover']],
+				v24: [parsed_json['hourly']['data'][24]['visibility']],
 
-				wS25: [parsed_json['hourly']['data'][22]['windSpeed']],
-				cR25: [parsed_json['hourly']['data'][22]['precipProbability']], 
-				cC25: [parsed_json['hourly']['data'][22]['cloudCover']],
-				v25: [parsed_json['hourly']['data'][22]['visibility']],
+				wS25: [parsed_json['hourly']['data'][25]['windSpeed']],
+				cR25: [parsed_json['hourly']['data'][25]['precipProbability']], 
+				cC25: [parsed_json['hourly']['data'][25]['cloudCover']],
+				v25: [parsed_json['hourly']['data'][25]['visibility']],
 
-				wS26: [parsed_json['hourly']['data'][23]['windSpeed']],
-				cR26: [parsed_json['hourly']['data'][23]['precipProbability']], 
-				cC26: [parsed_json['hourly']['data'][23]['cloudCover']],
-				v26: [parsed_json['hourly']['data'][23]['visibility']],
+				wS26: [parsed_json['hourly']['data'][26]['windSpeed']],
+				cR26: [parsed_json['hourly']['data'][26]['precipProbability']], 
+				cC26: [parsed_json['hourly']['data'][26]['cloudCover']],
+				v26: [parsed_json['hourly']['data'][26]['visibility']],
 
 			});
 	}
