@@ -58,7 +58,7 @@ export default class DailyForecast extends Component {
 
 		//all forecasts are then added into the page here
 		return (
-			<div class="swiper-container swiper-init" data-pagination=".swiper-pagination" data-direction="vertical" data-space-between="0">
+			<div class="swiper-container1 swiper-init" data-direction="vertical" data-space-between="0">
 			 	<div class="swiper-wrapper ">
 			 		<div class="swiper-slide">
 			 			{forecasts[0]}{forecasts[1]}{forecasts[2]}{forecasts[3]}{forecasts[4]}{forecasts[5]}{forecasts[6]}

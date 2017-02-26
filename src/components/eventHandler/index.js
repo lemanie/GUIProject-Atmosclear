@@ -45,12 +45,16 @@ export default class EventHandler extends Component {
         var str = "" + eveDescs[i];
         var k = str.indexOf(".");
         var strSub = str.substring(0, k+1);
-        events[i] = <Event eventDate={eveDates[i]} eventName={eveNames[i]} eventDesc={strSub}/>;
+        events[i] = <div class="swiper-slide">
+                      <Event eventDate={eveDates[i]} eventName={eveNames[i]} eventDesc={strSub}/>
+                    </div>;
       }
     return(
-      <div class={"swiper-container swiper-init " + style.eventHandler}>
-        <div class={"swiper-wrapper " + style.event}>
-        {events[0]}{events[1]}{events[2]}
+      <div class ={"allEvents " +style.eventHandler}>
+        <div class="swiper-container2 swiper-init" data-direction="horizontal" data-space-between="0">
+          <div class={"swiper-wrapper " + style.event}>
+             {events[0]}{events[1]}{events[2]}
+          </div>
         </div>
       </div>
     );

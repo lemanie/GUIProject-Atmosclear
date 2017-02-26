@@ -33,7 +33,7 @@ export default class App extends Component {
 						<div class="panel panel-left panel-cover"><Settings /></div>
 						<div class="views">
 							<div class="view view-main">
-								<div class="pages toolbar-fixed navbar-fixed">
+								<div class="pages navbar-fixed toolbar-fixed">
 									<Header onModeChange={mode => this.setState({...this.state, mode})}/>
         							<div data-page="day-forecast" 
         							 class={`page ${this.state.selected!=='day-forecast'?'cached':''}`}>
