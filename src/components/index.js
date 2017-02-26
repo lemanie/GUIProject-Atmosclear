@@ -38,7 +38,6 @@ export default class App extends Component {
 									<Header onModeChange={mode => this.setState({...this.state, mode})}/>
         							<div data-page="day-forecast" 
         							 class={`page ${this.state.selected!=='day-forecast'?'cached':''}`}>
-										<TableHeader />
 										<DailyForecast apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
 										<Footer selected={this.state.selected}
 										  onSelectionChange={selected => this.setState({...this.state, selected})}/>
