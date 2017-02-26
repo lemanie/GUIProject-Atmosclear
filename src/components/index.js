@@ -16,16 +16,34 @@ import $ from 'jquery';
 export default class App extends Component {
 	constructor() {
 		super();
+		this.fetchEvents();
 		this.setState({
 			active: 'view-index',
 			mode: 'day'
 		});
 	}
 
+	fetchEvents = () => {
+		var url = "https://ipapi.co/json/";
+		$.ajax({
+			url: url,
+			dataType: "json",
+			success: this.parseLocation,
+			error: function(req, err){console.log('JSON file not foundd, error: ' + err);}
+		})
+  }
+
+  parseLocation = (parsed_json) => {
+    this.setState({
+      latitude : "" + parsed_json['latitude'],
+      longitude : "" + parsed_json['longitude'],
+    });
+  }
+
 	render() {
-		var APIKEY = "" + "82f580210edbad1e85a1f22ab2e350d9";
-		var LATITUDE = "" + "51.528308";
-		var LONGITUDE = "" + "-0.3817765";
+		var APIKEY = "" + "17aa9b178decaf195852170621f50487";
+		var LATITUDE = "" + this.state.latitude; //"51.528308"
+		var LONGITUDE = "" + this.state.longitude; //"-0.3817765"
 		return (
 			<div class="device-wrapper">
 				<div class="device device-android"> 
@@ -38,6 +56,7 @@ export default class App extends Component {
 								<Header onModeChange={mode => this.setState({...this.state, mode})}/>
 									<div class="pages navbar-fixed toolbar-fixed">
 										<div class="page" data-page="day-forecast">
+											<TableHeader daily={true} />
 											<DailyForecast apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
 										</div>
 									</div>
@@ -57,7 +76,7 @@ export default class App extends Component {
 								<Header onModeChange={mode => this.setState({...this.state, mode})}/>
 									<div class="pages navbar-fixed toolbar-fixed">
 										<div class="page " data-page="week-forecast">
-											<TableHeader />
+											<TableHeader daily={false} />
 											<WeeklyForecast apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
 										</div>
 									</div>

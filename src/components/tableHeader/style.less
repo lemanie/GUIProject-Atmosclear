@@ -24,7 +24,8 @@
 	}
 
 	.block {
-		display: block; 
+		display: fixed; 
+		z-index: 10;
 		float: left;
 		width: 20%;
 		height: 100%;
@@ -44,6 +45,10 @@
 
 }
 
+.tableHeaderDaily {
+	margin-bottom: -104px;
+}
+
 :global(.night) .tableHeader {
 	margin-top: 56px;
 	height: 66px;
@@ -52,6 +57,7 @@
 	font-weight: bold;
 	font-size: 0.9em;
 	background-color: black;
+
 	.shade0 {
 		background-color: black;
 	}
@@ -69,7 +75,8 @@
 	}
 
 	.block {
-		display: block; 
+		display: fixed;
+		z-index: 10;
 		float: left;
 		width: 20%;
 		height: 100%;
