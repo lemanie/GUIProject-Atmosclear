@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import Forecast from '../forecast';
-
+import style from './style';
 import $ from 'jquery'; // import jquery for API calls
 
 export default class DailyForecast extends Component {
@@ -58,21 +58,23 @@ export default class DailyForecast extends Component {
 
 		//all forecasts are then added into the page here
 		return (
-			<div class="swiper-container1 swiper-init" data-direction="vertical" data-space-between="0">
-			 	<div class="swiper-wrapper ">
-			 		<div class="swiper-slide">
-			 			{forecasts[0]}{forecasts[1]}{forecasts[2]}{forecasts[3]}{forecasts[4]}{forecasts[5]}{forecasts[6]}
-			 		</div>
-					<div class="swiper-slide">
-			 			{forecasts[7]}{forecasts[8]}{forecasts[9]}{forecasts[10]}{forecasts[11]}{forecasts[12]}{forecasts[13]}
-					</div>
-					<div class="swiper-slide">
-			 			{forecasts[14]}{forecasts[15]}{forecasts[16]}{forecasts[17]}{forecasts[18]}{forecasts[19]}{forecasts[20]}
-					</div>
-					<div class="swiper-slide">
-			 			{forecasts[21]}{forecasts[22]}{forecasts[23]}{forecasts[24]}{forecasts[25]}{forecasts[26]}{forecasts[27]}
-			 		</div>
-			 	 </div>
+			<div class ={"allDaily " +style.dailyForecast}>
+				 <div class="swiper-container1 swiper-init" data-direction="vertical" data-space-between="0">
+				 	<div class="swiper-wrapper ">
+				 		<div class="swiper-slide">
+				 			{forecasts[0]}{forecasts[1]}{forecasts[2]}{forecasts[3]}{forecasts[4]}{forecasts[5]}{forecasts[6]}
+				 		</div>
+						<div class="swiper-slide">
+				 			{forecasts[7]}{forecasts[8]}{forecasts[9]}{forecasts[10]}{forecasts[11]}{forecasts[12]}{forecasts[13]}
+						</div>
+						<div class="swiper-slide">
+				 			{forecasts[14]}{forecasts[15]}{forecasts[16]}{forecasts[17]}{forecasts[18]}{forecasts[19]}{forecasts[20]}
+						</div>
+						<div class="swiper-slide">
+				 			{forecasts[21]}{forecasts[22]}{forecasts[23]}{forecasts[24]}{forecasts[25]}{forecasts[26]}{forecasts[27]}
+				 		</div>
+				 	 </div>
+				</div>
 			</div>
 		);
 

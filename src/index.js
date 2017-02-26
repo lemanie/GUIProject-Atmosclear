@@ -22,7 +22,7 @@ function init() {
 		fastClicks: true,
 		activeState: true,
 		activeStateElements: true,
-		animatePages: false,
+		animatePages: true,
 	});
 
 

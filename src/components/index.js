@@ -10,6 +10,7 @@ import DailyForecast from './dailyForecast'; // Import the day forecast page (le
 import WeeklyForecast from './weeklyForecast'; // Import the week forecast page (right)
 import TableHeader from './tableHeader';
 import Navigation from './navigation';
+import Home from './home';
 import $ from 'jquery';
 
 export default class App extends Component {
@@ -22,7 +23,7 @@ export default class App extends Component {
 	}
 
 	render() {
-		var APIKEY = "" + "789ca30671f514e40bdee5c11f1601ed";
+		var APIKEY = "" + "82f580210edbad1e85a1f22ab2e350d9";
 		var LATITUDE = "" + "51.528308";
 		var LONGITUDE = "" + "-0.3817765";
 		return (
@@ -44,7 +45,7 @@ export default class App extends Component {
 									</div>
 									<div data-page="index"
 									 class={`page ${this.state.selected!=='index'?'cached':''}`}>
-										<Tile apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
+										<Home apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
 										<EventHandler count="3" />
 										<Footer selected={this.state.selected}
 										  onSelectionChange={selected => this.setState({...this.state, selected})}/>
