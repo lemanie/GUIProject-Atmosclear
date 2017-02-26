@@ -51,10 +51,11 @@ export default class EventHandler extends Component {
       }
     return(
       <div class ={"allEvents " +style.eventHandler}>
-        <div class="swiper-container2 swiper-init" data-direction="horizontal" data-space-between="0">
+        <div class="swiper-container swiper-init" data-direction="horizontal" data-space-between="0" data-pagination=".swiper-pagination">
           <div class={"swiper-wrapper " + style.event}>
-             {events[0]}{events[1]}{events[2]}
+              {events[0]}{events[1]}{events[2]}
           </div>
+          <div class="swiper-pagination"></div>
         </div>
       </div>
     );

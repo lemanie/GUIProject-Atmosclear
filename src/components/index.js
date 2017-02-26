@@ -17,7 +17,7 @@ export default class App extends Component {
 	constructor() {
 		super();
 		this.setState({
-			selected: 'index',
+			active: 'view-index',
 			mode: 'day'
 		});
 	}
@@ -29,34 +29,39 @@ export default class App extends Component {
 		return (
 			<div class="device-wrapper">
 				<div class="device device-android"> 
-					<div id="app" class={`framework7-root ${this.state.selected} ${this.state.mode}`}> 
-						<div class="panel-overlay"></div>
-						<div class="panel panel-left panel-cover"><Settings /></div>
-						<div class="views">
-							<div class="view view-main">
-								<div class="pages navbar-fixed toolbar-fixed">
-									<Header onModeChange={mode => this.setState({...this.state, mode})}/>
-        							<div data-page="day-forecast" 
-        							 class={`page ${this.state.selected!=='day-forecast'?'cached':''}`}>
-										<DailyForecast apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
-										<Footer selected={this.state.selected}
-										  onSelectionChange={selected => this.setState({...this.state, selected})}/>
+					<div id="app" class={`framework7-root ${this.state.active} ${this.state.mode}`}> 
+						<div class="panel panel-left panel-cover">
+							<Settings />
+						</div>
+						<div class="views tabs">
+							<div class={`view ${this.state.active!=='view-day'?'view tab':'view-main tab active'}`} div id="view-day">
+								<Header onModeChange={mode => this.setState({...this.state, mode})}/>
+									<div class="pages navbar-fixed toolbar-fixed">
+										<div class="page" data-page="day-forecast">
+											<DailyForecast apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
+										</div>
 									</div>
-									<div data-page="index"
-									 class={`page ${this.state.selected!=='index'?'cached':''}`}>
-										<Home apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
-										<EventHandler count="3" />
-										<Footer selected={this.state.selected}
-										  onSelectionChange={selected => this.setState({...this.state, selected})}/>
+								<Footer active={this.state.active} onSelectionChange={active => this.setState({...this.state, active})}/>
+							</div>
+							<div class={`view ${this.state.active!=='view-index'?'view tab':'view-main tab active'}`} div id="view-index">
+								<Header onModeChange={mode => this.setState({...this.state, mode})}/>
+									<div class="pages navbar-fixed toolbar-fixed">
+										<div class="page" data-page="index">
+											<Home apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
+											<EventHandler count="3" />
+										</div>
 									</div>
-									<div data-page="week-forecast"
-									 class={`page ${this.state.selected!=='week-forecast'?'cached':''}`}>
-										<TableHeader />
-										<WeeklyForecast apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
-										<Footer selected={this.state.selected}
-										  onSelectionChange={selected => this.setState({...this.state, selected})}/>
+								<Footer active={this.state.active} onSelectionChange={active => this.setState({...this.state, active})}/>
+							</div>
+							<div class={`view ${this.state.active!=='view-week'?'view tab':'view-main tab active'}`} div id="view-week">
+								<Header onModeChange={mode => this.setState({...this.state, mode})}/>
+									<div class="pages navbar-fixed toolbar-fixed">
+										<div class="page " data-page="week-forecast">
+											<TableHeader />
+											<WeeklyForecast apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
+										</div>
 									</div>
-								</div>
+								<Footer active={this.state.active} onSelectionChange={active => this.setState({...this.state, active})}/>
 							</div>
 						</div>
 					</div>

@@ -12,13 +12,13 @@ export default class Footer extends Component {
 	render() {
 		//We create a toolbar that serves as our footer here (see https://framework7.io/docs/toolbar.html )
 		const select = this.props.onSelectionChange
-		const nav = title => <Navigation selected={this.props.selected === title} onClick={() => select(title)} title={`#${title}`} />
+		const nav = title => <Navigation active={this.props.active === title} onClick={() => select(title)} title={`#${title}`} />
 		return (
 			<div class={"toolbar toolbar-bottom " + style.footer}>
 				<div class="toolbar-inner">
-					{nav('day-forecast')}
-					{nav('index')}
-					{nav('week-forecast')}
+					{nav('view-day')}
+					{nav('view-index')}
+					{nav('view-week')}
 				</div>
 			</div>
 		);

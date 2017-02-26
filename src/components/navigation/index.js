@@ -8,13 +8,13 @@ export default class Navigation extends Component {
 
 	selectData(title) {
   		switch(title) {
-  			case "#day-forecast":
+  			case "#view-day":
   				this.props.icon = "alarm";
   				break; 
-	  		case "#index":
+	  		case "#view-index":
   				this.props.icon = "home";
   				break;
-			case "#week-forecast":
+			case "#view-week":
   				this.props.icon = "event";
   				break;
 			default:		
@@ -31,7 +31,7 @@ export default class Navigation extends Component {
 				<a href={this.props.title} class="link" onClick={() => this.props.onClick()}>
 					<i class={`"icon"
 						material-icons
-						${this.props.selected ? style.iconSelected : style.iconNotSelected}
+						${this.props.active ? style.iconSelected : style.iconNotSelected}
 					`} >
 						{this.props.icon}
 					</i>

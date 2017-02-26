@@ -16,14 +16,33 @@ function init() {
 	var $$ = Dom7;
 
 	// Add one view (see index.js to see where the main view is defined)
-	var mainView = myApp.addView('.view-main', {
-		dynamicNavbar : true,
+	var mainView = myApp.addView('#view-index', {
+		main: true,
 		domCache : true,
 		fastClicks: true,
 		activeState: true,
 		activeStateElements: true,
 		animatePages: true,
 	});
+
+	mainView = myApp.addView('#view-day', {
+		name: 'view-day',
+		domCache : true,
+		fastClicks: true,
+		activeState: true,
+		activeStateElements: true,
+		animatePages: false,
+	});
+
+	mainView = myApp.addView('#view-week', {
+		name: 'view-week',
+		domCache : true,
+		fastClicks: true,
+		activeState: true,
+		activeStateElements: true,
+		animatePages: true,
+	});
+
 
 
 }
