@@ -107,6 +107,7 @@ export default class App extends Component {
 									<Header onModeChange={mode => this.setState({...this.state, mode})}/>
 										<div class="pages navbar-fixed toolbar-fixed">
 											<div class="page" data-page="day-forecast">
+									
 											</div>
 										</div>
 									<Footer active={this.state.active} onSelectionChange={active => this.setState({...this.state, active})}/>
@@ -115,6 +116,9 @@ export default class App extends Component {
 									<Header onModeChange={mode => this.setState({...this.state, mode})}/>
 										<div class="pages navbar-fixed toolbar-fixed">
 											<div class="page" data-page="index">
+										
+												<EventHandler count="3" />
+												
 											</div>
 										</div>
 									<Footer active={this.state.active} onSelectionChange={active => this.setState({...this.state, active})}/>
@@ -123,6 +127,7 @@ export default class App extends Component {
 									<Header onModeChange={mode => this.setState({...this.state, mode})}/>
 										<div class="pages navbar-fixed toolbar-fixed">
 											<div class="page " data-page="week-forecast">
+										
 											</div>
 										</div>
 									<Footer active={this.state.active} onSelectionChange={active => this.setState({...this.state, active})}/>

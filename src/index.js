@@ -42,6 +42,13 @@ function init() {
 		activeStateElements: true,
 		animatePages: true,
 	});
+
+	// Init slider and store its instance in mySwiper variable
+	var mySwiper = myApp.swiper('.swiper-container', {
+		 spaceBetween: 0,
+		 speed: 400,
+		 direction: 'horizontal',
+	}); 
 }
 
 // register ServiceWorker via OfflinePlugin, for prod only:
@@ -49,7 +56,7 @@ if (process.env.NODE_ENV==='production') {
 	require('./pwa');
 }
 
-// in development, set up HMR:
+//in development, set up HMR:
 if (module.hot) {
 	//require('preact/devtools');   // turn this on if you want to enable React DevTools!
 	module.hot.accept('./components/index', () => requestAnimationFrame(init) );

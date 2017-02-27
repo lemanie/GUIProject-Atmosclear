@@ -16,11 +16,12 @@ export default class EventHandler extends Component {
       url: url,
       dataType: "json",
       success: this.parseEvents,
-      error: function(req, err){console.log('JSON file not found, error: ' + err);}
+      error: function(req, err){console.log('Events call to JSON file unsucessful');}
     })
   }
 
   parseEvents = (parsed_json) => {
+    console.log('Events call to JSON file sucessful');
     this.setState({
       eventDate0: parsed_json['edate'][0],
       eventName0: parsed_json['ename'][0],
@@ -51,11 +52,18 @@ export default class EventHandler extends Component {
       }
     return(
       <div class ={"allEvents " +style.eventHandler}>
-        <div class="swiper-container swiper-init" data-direction="horizontal" data-space-between="0" data-pagination=".swiper-pagination">
+        <div class=".swiper-container swiper-init">
           <div class={"swiper-wrapper " + style.event}>
-              {events[0]}{events[1]}{events[2]}
+            <div class="swiper-slide">
+              {events[0]}
+            </div>
+            <div class="swiper-slide">
+              {events[1]}
+            </div>
+            <div class="swiper-slide">
+              {events[2]}
+            </div>
           </div>
-          <div class="swiper-pagination"></div>
         </div>
       </div>
     );
