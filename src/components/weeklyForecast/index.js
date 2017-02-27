@@ -67,6 +67,7 @@ export default class WeeklyForecast extends Component {
 
 
 	parseResponse = (parsed_json) => { 
+		console.log('Weather call weekly sucessful');
 		this.setState({ 
 				wS0: [parsed_json['daily']['data'][0]['windSpeed']],
 				cR0: [parsed_json['daily']['data'][0]['precipProbability']], 

@@ -72,6 +72,7 @@ export default class DailyForecast extends Component {
 
 
 	parseResponse = (parsed_json) => { 
+		console.log('Weather call daily sucessful');
 		this.setState({ 
 				wS0: [parsed_json['hourly']['data'][0]['windSpeed']],
 				cR0: [parsed_json['hourly']['data'][0]['precipProbability']], 

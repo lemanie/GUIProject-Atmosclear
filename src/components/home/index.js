@@ -46,7 +46,7 @@ export default class Home extends Component {
 	}
 
 	parseResponse = (parsed_json) => {
-		// set states for fields so they could be rende#cc0000 later on
+		console.log('Weather call home sucessful');
 		this.setState({
 			cloudCoverage: parsed_json['currently']['cloudCover'], 
 			chanceOfRain: parsed_json['currently']['precipProbability'], 

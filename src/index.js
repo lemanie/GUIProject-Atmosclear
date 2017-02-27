@@ -31,7 +31,7 @@ function init() {
 		fastClicks: true,
 		activeState: true,
 		activeStateElements: true,
-		animatePages: false,
+		animatePages: true,
 	});
 
 	mainView = myApp.addView('#view-week', {
@@ -42,9 +42,6 @@ function init() {
 		activeStateElements: true,
 		animatePages: true,
 	});
-
-
-
 }
 
 // register ServiceWorker via OfflinePlugin, for prod only:
