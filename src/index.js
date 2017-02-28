@@ -49,6 +49,13 @@ function init() {
 		 speed: 400,
 		 direction: 'horizontal',
 	}); 
+	
+	$$('.open-notification').on('click', function () {
+	    var clickedLink = this;
+		myApp.popover('.popover-notification', clickedLink);
+	});
+
+
 }
 
 // register ServiceWorker via OfflinePlugin, for prod only:

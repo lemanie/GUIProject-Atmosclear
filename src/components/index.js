@@ -5,12 +5,12 @@ import Footer from './footer'; // Import the footer component
 import Events from './events'; // Import the events component
 import EventHandler from './eventHandler';
 import Tile from './tile'; // Import the sensors component
-import Settings from './settings'; // Import the settings page
 import DailyForecast from './dailyForecast'; // Import the day forecast page (left)
 import WeeklyForecast from './weeklyForecast'; // Import the week forecast page (right)
 import TableHeader from './tableHeader';
 import Navigation from './navigation';
 import Home from './home';
+import Notification from './notification';
 import $ from 'jquery';
 
 export default class App extends Component {
@@ -21,6 +21,7 @@ export default class App extends Component {
 			active: 'view-index',
 			mode: 'day',
 			fetchLocationCalled: false,
+			notification: true,
 		});
 	}
 
@@ -30,7 +31,9 @@ export default class App extends Component {
 			url: url,
 			dataType: "json",
 			success: this.parseLocation,
-			error: function(req, err){console.log('Location call unsucessful, error: ' + err);}
+			error: function(req, err){
+				console.log('Location call unsucessful, error: ' + err);
+			}
 		})
 	}
 
@@ -45,20 +48,19 @@ export default class App extends Component {
 
 
 	render() {
-		var APIKEY = "" + "fd9448a8f8df54f13fe7eb12f7966933";
+		var APIKEY = "" + "c33249746297c1416596be5427f65f08";
 		var LATITUDE = String(this.state.latitude); 
 		var LONGITUDE = String(this.state.longitude);
 		if (this.state.fetchLocationCalled){
+		console.log(this.state.notification);
 			return (
 				<div class="device-wrapper">
 					<div class="device device-android"> 
-						<div id="app" class={`framework7-root ${this.state.active} ${this.state.mode} `}> 
-							<div class="panel panel-left panel-cover">
-								<Settings />
-							</div>
+						<div id="app" class={`framework7-root ${this.state.active} ${this.state.mode} ${this.state.notification}`}> 
+						<Notification apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE} notificationStatus={this.state.notification}/>
 							<div class="views tabs">
 								<div class={`view ${this.state.active!=='view-day'?'view tab':'view-main tab active'}`} div id="view-day">
-									<Header onModeChange={mode => this.setState({...this.state, mode})}/>
+									<Header onModeChange={mode => this.setState({...this.state, mode})} onNotificationChange={notification => this.setState({...this.state, notification})} />
 										<div class="pages navbar-fixed toolbar-fixed">
 											<div class="page" data-page="day-forecast">
 												<TableHeader daily={true} />
@@ -68,7 +70,7 @@ export default class App extends Component {
 									<Footer active={this.state.active} onSelectionChange={active => this.setState({...this.state, active})}/>
 								</div>
 								<div class={`view ${this.state.active!=='view-index'?'view tab':'view-main tab active'}`} div id="view-index">
-									<Header onModeChange={mode => this.setState({...this.state, mode})}/>
+									<Header onModeChange={mode => this.setState({...this.state, mode})} onNotificationChange={notification => this.setState({...this.state, notification})} />
 										<div class="pages navbar-fixed toolbar-fixed">
 											<div class="page" data-page="index">
 												<Home apiKey={APIKEY} lat={LATITUDE} lon={LONGITUDE}/>
@@ -78,7 +80,7 @@ export default class App extends Component {
 									<Footer active={this.state.active} onSelectionChange={active => this.setState({...this.state, active})}/>
 								</div>
 								<div class={`view ${this.state.active!=='view-week'?'view tab':'view-main tab active'}`} div id="view-week">
-									<Header onModeChange={mode => this.setState({...this.state, mode})}/>
+									<Header onModeChange={mode => this.setState({...this.state, mode})} onNotificationChange={notification => this.setState({...this.state, notification})} />
 										<div class="pages navbar-fixed toolbar-fixed">
 											<div class="page " data-page="week-forecast">
 												<TableHeader daily={false} />
@@ -98,36 +100,38 @@ export default class App extends Component {
 			return (	
 				<div class="device-wrapper">
 					<div class="device device-android"> 
-						<div id="app" class={`framework7-root ${this.state.active} ${this.state.mode} `}> 
-							<div class="panel panel-left panel-cover">
-								<Settings />
-							</div>
+						<div id="app" class={`framework7-root ${this.state.active} ${this.state.mode} ${this.state.notification}`}> 
+						<Notification apiKey="" lat="" lon="" notificationStatus={false}/>
 							<div class="views tabs">
 								<div class={`view ${this.state.active!=='view-day'?'view tab':'view-main tab active'}`} div id="view-day">
-									<Header onModeChange={mode => this.setState({...this.state, mode})}/>
+									<Header onModeChange={mode => this.setState({...this.state, mode})} onNotificationChange={notification => this.setState({...this.state, notification})} />
 										<div class="pages navbar-fixed toolbar-fixed">
 											<div class="page" data-page="day-forecast">
-									
+
 											</div>
 										</div>
 									<Footer active={this.state.active} onSelectionChange={active => this.setState({...this.state, active})}/>
 								</div>
 								<div class={`view ${this.state.active!=='view-index'?'view tab':'view-main tab active'}`} div id="view-index">
-									<Header onModeChange={mode => this.setState({...this.state, mode})}/>
+									<Header onModeChange={mode => this.setState({...this.state, mode})} onNotificationChange={notification => this.setState({...this.state, notification})} />
 										<div class="pages navbar-fixed toolbar-fixed">
 											<div class="page" data-page="index">
-										
+
+
+													
+
 												<EventHandler count="3" />
-												
+
+
 											</div>
 										</div>
 									<Footer active={this.state.active} onSelectionChange={active => this.setState({...this.state, active})}/>
 								</div>
 								<div class={`view ${this.state.active!=='view-week'?'view tab':'view-main tab active'}`} div id="view-week">
-									<Header onModeChange={mode => this.setState({...this.state, mode})}/>
+									<Header onModeChange={mode => this.setState({...this.state, mode})} onNotificationChange={notification => this.setState({...this.state, notification})} />
 										<div class="pages navbar-fixed toolbar-fixed">
 											<div class="page " data-page="week-forecast">
-										
+											
 											</div>
 										</div>
 									<Footer active={this.state.active} onSelectionChange={active => this.setState({...this.state, active})}/>
