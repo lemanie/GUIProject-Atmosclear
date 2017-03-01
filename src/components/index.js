@@ -51,7 +51,6 @@ export default class App extends Component {
 		var LATITUDE = String(this.state.latitude); 
 		var LONGITUDE = String(this.state.longitude);
 		if (this.state.fetchLocationCalled){
-		console.log(this.state.notification);
 			return (
 				<div class="device-wrapper">
 					<div class="device device-android"> 
@@ -95,7 +94,6 @@ export default class App extends Component {
 			);
 		}
 		else {
-			console.log("not entered, empty pages displayed")
 			return (	
 				<div class="device-wrapper">
 					<div class="device device-android"> 
@@ -115,12 +113,8 @@ export default class App extends Component {
 									<Header onModeChange={mode => this.setState({...this.state, mode})} />
 										<div class="pages navbar-fixed toolbar-fixed">
 											<div class="page" data-page="index">
-
-
-													
-
+											
 												<EventHandler count="3" />
-
 
 											</div>
 										</div>

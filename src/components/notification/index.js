@@ -24,7 +24,7 @@ export default class Notification extends Component {
 			url: url,
 			dataType: "jsonp",
 			success : this.parseResponse,
-			error : function(req, err){ console.log('     Notification API call failed ' + err); }
+			error : function(req, err){ console.log('Notification API call failed ' + err); }
 		})
 	}
 
@@ -38,15 +38,11 @@ export default class Notification extends Component {
 				return (
 					<div class={"popover popover-notification " + style.notification}>
 						<span class={style.notData}>
-							<p>
-								Current Weather Warning:<br/> 
-								{nextHour}:00 {chanceOfRainNextHour}% Chance of Rain<br/>
-								<a href="#" class="link close-popover">
-									<i class={`material-icons ${style.icon}`}>
-										close
-									</i>
-								</a>
-							</p>
+								<p>
+									<b>Current Weather Warning:</b><br/> 
+									{nextHour}:00 {chanceOfRainNextHour}% Chance of Rain
+								</p>
+								<a href="#" class="link close-popover"></a>
 						</span>
 					</div>
 		  		);
@@ -75,14 +71,11 @@ export default class Notification extends Component {
 		  		return (
 		  			<div class={"popover popover-notification " + style.notification}>
 						<span class={style.notData}>
-							<p>No Current Weather Warnings:<br/> 
-								{message}<br/>
-								<a href="#" class="link close-popover" >
-									<i class={`material-icons ${style.icon}`}>
-										close
-									</i>
-								</a>
-							</p>
+								<p>
+									<b>No Current Weather Warnings:</b><br/> 
+										{message}
+								</p>
+								<a href="#" class="link close-popover"></a>
 						</span>
 					</div>
 		  		);
@@ -93,7 +86,7 @@ export default class Notification extends Component {
 	}
 
 	parseResponse = (parsed_json) => {
-		console.log('     Notification API call sucessful');
+		console.log('Notification API call sucessful');
 		this.setState({
 			chanceOfRain1: [parsed_json['hourly']['data'][1]['precipProbability']], 
 			chanceOfRain2: [parsed_json['hourly']['data'][2]['precipProbability']], 
