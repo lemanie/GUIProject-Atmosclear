@@ -1,15 +1,17 @@
 import { h, Component } from 'preact';
 import style from './style';
 import Event from "../events"
-import $ from 'jquery'; // import jquery for API calls
+import $ from 'jquery';
 
 export default class EventHandler extends Component {
 
-  constructor(props){
+  /* Make initial call for event data */
+  constructor(props) {
     super(props)
     this.fetchEvents();
   }
 
+  /* Call for event data from json file */
   fetchEvents = () => {
     var url = "./lib/EVENTDATA.json";
     $.ajax({
@@ -20,37 +22,26 @@ export default class EventHandler extends Component {
     })
   }
 
-  parseEvents = (parsed_json) => {
-    console.log('Events call to JSON file sucessful');
-    this.setState({
-      eventDate0: parsed_json['edate'][0],
-      eventName0: parsed_json['ename'][0],
-      eventDesc0: parsed_json['edesc'][0],
-      eventDate1: parsed_json['edate'][1],
-      eventName1: parsed_json['ename'][1],
-      eventDesc1: parsed_json['edesc'][1],
-      eventDate2: parsed_json['edate'][2],
-      eventName2: parsed_json['ename'][2],
-      eventDesc2: parsed_json['edesc'][2],
-      });
-  }
-
-  render(){
+  render() {
     var i;
+    /* Initialize lists which will be utilized in constructing Event components */
     var eveDates = [this.state.eventDate0,this.state.eventDate1,this.state.eventDate2,];
     var eveNames = [this.state.eventName0,this.state.eventName1,this.state.eventName2,];
     var eveDescs = [this.state.eventDesc0,this.state.eventDesc1,this.state.eventDesc2,];
     var count = parseInt(this.props.count);
     var events = [];
-    for(i=0; i<count; i++){
+    /* Create Event components */
+    for(i=0; i<count; i++) {
         var str = "" + eveDescs[i];
         var k = str.indexOf(".");
         var strSub = str.substring(0, k+1);
         events[i] = <div class="swiper-slide">
                       <Event eventDate={eveDates[i]} eventName={eveNames[i]} eventDesc={strSub}/>
                     </div>;
-      }
-    return(
+    }
+
+    /* Render Event components in swipable format */
+    return (
       <div class ={"allEvents " +style.eventHandler}>
         <div class=".swiper-container swiper-init">
           <div class={"swiper-wrapper " + style.event}>
@@ -67,5 +58,21 @@ export default class EventHandler extends Component {
         </div>
       </div>
     );
+  }
+
+  /* Parse response from json file, setting states which will be necessary to build Event components */
+  parseEvents = (parsed_json) => {
+    console.log('Events call to JSON file sucessful');
+    this.setState({
+      eventDate0: parsed_json['edate'][0],
+      eventName0: parsed_json['ename'][0],
+      eventDesc0: parsed_json['edesc'][0],
+      eventDate1: parsed_json['edate'][1],
+      eventName1: parsed_json['ename'][1],
+      eventDesc1: parsed_json['edesc'][1],
+      eventDate2: parsed_json['edate'][2],
+      eventName2: parsed_json['ename'][2],
+      eventDesc2: parsed_json['edesc'][2],
+    });
   }
 }

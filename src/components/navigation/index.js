@@ -6,6 +6,11 @@ import $ from 'jquery';
 	
 export default class Navigation extends Component {	
 
+	constructor(props) {
+		super(props);
+	}
+
+	/* Select appropriate icon */
 	selectData(title) {
   		switch(title) {
   			case "#view-day":
@@ -22,6 +27,7 @@ export default class Navigation extends Component {
 		}
 	}
 
+	/* Render appropriate icon and assess whether icon should be in "active" or "inactive" mode */
 	render(){
 		{this.selectData(this.props.title)}
 		return (

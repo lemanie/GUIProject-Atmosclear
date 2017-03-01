@@ -1,19 +1,23 @@
 import { h, Component } from 'preact';
+import $ from 'jquery';
 
-import Header from './header'; // Import the header component
-import Footer from './footer'; // Import the footer component
-import Events from './events'; // Import the events component
+/* Import components necessary to build application */
+import Header from './header';
+import Footer from './footer';
+import Events from './events';
 import EventHandler from './eventHandler';
-import Tile from './tile'; // Import the sensors component
-import DailyForecast from './dailyForecast'; // Import the day forecast page (left)
-import WeeklyForecast from './weeklyForecast'; // Import the week forecast page (right)
+import Tile from './tile';
+import DailyForecast from './dailyForecast';
+import WeeklyForecast from './weeklyForecast';
 import TableHeader from './tableHeader';
 import Navigation from './navigation';
 import Home from './home';
 import Notification from './notification';
-import $ from 'jquery';
 
 export default class App extends Component {
+
+	/* Make initial call for location data and set initial state
+		of application to "daytime" mode */
 	constructor() {
 		super();
 		this.fetchLocation();
@@ -24,6 +28,7 @@ export default class App extends Component {
 		});
 	}
 
+	/* Call for location data utilizing an external API */
 	fetchLocation = () => {
 		var url = "https://ipapi.co/json/";
 		$.ajax({
@@ -36,17 +41,8 @@ export default class App extends Component {
 		})
 	}
 
-	parseLocation = (parsed_json) => {
-		console.log('Location call sucessful');
-		this.setState({
-			longitude: parsed_json['longitude'],
-			latitude: parsed_json['latitude'],
-			fetchLocationCalled: true,
-		});
-	}
-
-
 	render() {
+		/* Initialize elements necessary to make API calls and obtain weather data */
 		var APIKEY = "" + "c33249746297c1416596be5427f65f08";
 		var LATITUDE = String(this.state.latitude); 
 		var LONGITUDE = String(this.state.longitude);
@@ -104,7 +100,6 @@ export default class App extends Component {
 									<Header onModeChange={mode => this.setState({...this.state, mode})} />
 										<div class="pages navbar-fixed toolbar-fixed">
 											<div class="page" data-page="day-forecast">
-
 											</div>
 										</div>
 									<Footer active={this.state.active} onSelectionChange={active => this.setState({...this.state, active})}/>
@@ -113,9 +108,7 @@ export default class App extends Component {
 									<Header onModeChange={mode => this.setState({...this.state, mode})} />
 										<div class="pages navbar-fixed toolbar-fixed">
 											<div class="page" data-page="index">
-											
 												<EventHandler count="3" />
-
 											</div>
 										</div>
 									<Footer active={this.state.active} onSelectionChange={active => this.setState({...this.state, active})}/>
@@ -135,7 +128,15 @@ export default class App extends Component {
 				</div>
 			);
 		}
-
 	}
-	
+
+	/* Parse longitude and latitude data from pulled API data */
+	parseLocation = (parsed_json) => {
+		console.log('Location call sucessful');
+		this.setState({
+			longitude: parsed_json['longitude'],
+			latitude: parsed_json['latitude'],
+			fetchLocationCalled: true,
+		});
+	}
 }

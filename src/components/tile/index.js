@@ -4,6 +4,12 @@ import $ from 'jquery';// import jquery for API calls
 
 export default class Tile extends Component {
 
+	constructor(props) {
+		super(props);
+	}
+
+	/* Select appropriate data and associated CSS stylings for a given Tile 
+		component based on properties passed in */
 	selectData(title) {
   		switch(title) {
   			case "Cloud Cover":
@@ -63,6 +69,7 @@ export default class Tile extends Component {
 	  	}
   	}
 
+  	/* Render appropriate Tile utilizing associated data, icon, and CSS properties */
 	render() {
 		this.selectData(this.props.title);
 		return (

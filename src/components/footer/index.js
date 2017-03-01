@@ -5,12 +5,13 @@ import Navigation from '../navigation';
 import $ from 'jquery';
 
 export default class Footer extends Component {
-	constructor(props){
+
+	constructor(props) {
 		super(props);
 	}
-	
+
+	/* Render a toolbar from Framework7 that enables navigation between views of the application */
 	render() {
-		//We create a toolbar that serves as our footer here (see https://framework7.io/docs/toolbar.html )
 		const select = this.props.onSelectionChange
 		const nav = title => <Navigation active={this.props.active === title} onClick={() => select(title)} title={`#${title}`} />
 		return (

@@ -5,6 +5,7 @@ import Notification from '../notification';
 
 export default class Header extends Component {
 
+	/* Set initial state of app as "daytime" mode */
 	constructor(props) {
 		super(props);
 		this.setState({
@@ -12,6 +13,7 @@ export default class Header extends Component {
 		});
 	}
 
+	/* Switch between "daytime" and "nighttime" CSS */
 	changeMode() {
 		if (this.state.mode === 'day') {
 			this.setState({...this.state, mode: 'night'})
@@ -23,7 +25,7 @@ export default class Header extends Component {
 		}
 	}
 
-
+	/* Render Header component in application with appropriate icons and application name */
 	render() {
 		return (
 				<div class={"navbar " + style.navbar}>  

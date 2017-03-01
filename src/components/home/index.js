@@ -1,16 +1,17 @@
 import { h, Component } from 'preact';
 import style from './style';
 import Tile from'../tile';
-import $ from 'jquery';// import jquery for API calls
+import $ from 'jquery';
 
 export default class Home extends Component {
-	// a constructor with initial set states
+
+	/* Make initial call for weather data */
 	constructor(props){
 		super(props);
 		this.fetchWeatherData();
 	}
 
-	// a call to fetch weather data via darkSky
+	/* Call for weather data utilizing elements passed in as properties */
 	fetchWeatherData = () => {
 		var apiKey = "" + this.props.apiKey;
 		var latitude = "" + this.props.lat;
@@ -24,6 +25,7 @@ export default class Home extends Component {
 		})
 	}
 
+	/* Render home screen by placing Tile components in organized rows */
 	render() {
 		return (
 			<div class={"allRows " + style.home}>
@@ -45,6 +47,7 @@ export default class Home extends Component {
   		);
 	}
 
+	/* Parse response from API, setting states which will be necessary to build Home components */
 	parseResponse = (parsed_json) => {
 		console.log('Weather call home sucessful');
 		this.setState({

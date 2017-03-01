@@ -1,9 +1,10 @@
 import { h, Component } from 'preact';
 import style from './style';
-import $ from 'jquery';// import jquery for API calls
+import $ from 'jquery';
 
 export default class Notification extends Component {
-	// a constructor with initial set states
+	/* Make initial call for weather data, if necessary,
+		and set initial state of app as "daytime" mode */
 	constructor(props){
 		super(props);
 		if (this.props.notificationStatus) {
@@ -14,7 +15,7 @@ export default class Notification extends Component {
 		});
 	}
 
-	// a call to fetch weather data via darkSky
+	/* Call for weather data utilizing elements passed in as properties */
 	fetchWeatherData = () => {
 		var apiKey = "" + this.props.apiKey;
 		var latitude = "" + this.props.lat;
@@ -28,12 +29,14 @@ export default class Notification extends Component {
 		})
 	}
 
+	/* Render Notification popover and evaluate appropriate message to be displayed */
 	render() {	
 		if (this.props.notificationStatus) {
 			var currentTime = new Date().getHours();
 			var nextHour = currentTime+1;
 			var chanceOfRainNextHour = parseInt((this.state.chanceOfRain1)*100); 
 			console.log(chanceOfRainNextHour);
+			/* Construct message presented if there is a chance of rain >= 50% in the current hour */
 			if ( (chanceOfRainNextHour > 49) ){
 				return (
 					<div class={"popover popover-notification " + style.notification}>
@@ -54,20 +57,24 @@ export default class Notification extends Component {
 		  		var message = "";
 		  		var futureHour = currentTime+2;
 		  		for (i = 0; i<chancesOfRain.length; i++){
+		  			/* Check if there is a chance of rain >= 50% in the next 11 hours */
 		  			if (chancesOfRain[i] > 49) {
 		  				chanceOfRainFuture = parseInt((chancesOfRain[i])*100);
 		  				futureHour = futureHour + i;
 		  				break;
 		  			}
 		  		}
+		  		/* Construct message presented if there is no chance of rain >= 50% in the next 11 hours */
 		  		if ( i === 11 ) {
 		  			message = "no rain expected for next 12 hours";
 		  		}
+		  		/* Construct message presented if there is a chance of rain >= 50% in the next 11 hours */
 		  		else {
 		  			message = futureHour+ ":00 " + chanceOfRainFuture + "%";
 		  		}
 		  		
-
+		  		/* Return correct notification message given weather data in the current hour 
+		  			and in the 11 subsequent hours*/
 		  		return (
 		  			<div class={"popover popover-notification " + style.notification}>
 						<span class={style.notData}>
@@ -85,6 +92,7 @@ export default class Notification extends Component {
 		}
 	}
 
+	/* Parse response from API, setting states which will be necessary to build Notification component */
 	parseResponse = (parsed_json) => {
 		console.log('Notification API call sucessful');
 		this.setState({

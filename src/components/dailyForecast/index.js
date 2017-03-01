@@ -1,16 +1,17 @@
 import { h, Component } from 'preact';
 import Forecast from '../forecast';
 import style from './style';
-import $ from 'jquery'; // import jquery for API calls
+import $ from 'jquery';
 
 export default class DailyForecast extends Component {
-	// a constructor with initial set states
-	constructor(props){
+	
+	/* Make initial call for weather data */
+	constructor(props) {
 		super(props);
 		this.fetchWeatherData();
 	}
 
-	// a call to fetch weather data via darkSky
+	/* Call for weather data utilizing elements passed in as properties */
 	fetchWeatherData = () => {
 		var apiKey = "" + this.props.apiKey;
 		var latitude = "" + this.props.lat;
@@ -25,18 +26,20 @@ export default class DailyForecast extends Component {
 	}
 
 	render() {
+		/* Initialize lists which will be utilized in constructing Forecast components */
 		var times = ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"];
 		var winSpe = [this.state.wS0, this.state.wS1, this.state.wS2, this.state.wS3, this.state.wS4, this.state.wS5, this.state.wS6, this.state.wS7, this.state.wS8, this.state.wS9, this.state.wS10, this.state.wS11, this.state.wS12, this.state.wS13, this.state.wS14, this.state.wS15, this.state.wS16, this.state.wS17, this.state.wS18, this.state.wS19, this.state.wS20, this.state.wS21, this.state.wS22, this.state.wS23,];
 		var chaRai = [this.state.cR0, this.state.cR1, this.state.cR2, this.state.cR3, this.state.cR4, this.state.cR5, this.state.cR6, this.state.cR7, this.state.cR8, this.state.cR9, this.state.cR10, this.state.cR11, this.state.cR12, this.state.cR13, this.state.cR14, this.state.cR15, this.state.cR16, this.state.cR17, this.state.cR18, this.state.cR19, this.state.cR20, this.state.cR21, this.state.cR22, this.state.cR23,];
 		var cloCov = [this.state.cC0, this.state.cC1, this.state.cC2, this.state.cC3, this.state.cC4, this.state.cC5, this.state.cC6, this.state.cC7, this.state.cC8, this.state.cC9, this.state.cC10, this.state.cC11, this.state.cC12, this.state.cC13, this.state.cC14, this.state.cC15, this.state.cC16, this.state.cC17, this.state.cC18, this.state.cC19, this.state.cC20, this.state.cC21, this.state.cC22, this.state.cC23,];
 		var vis = [this.state.v0, this.state.v1, this.state.v2, this.state.v3, this.state.v4, this.state.v5, this.state.v6, this.state.v7, this.state.v8, this.state.v9, this.state.v10, this.state.v11, this.state.v12, this.state.v13, this.state.v14, this.state.v15, this.state.v16, this.state.v17, this.state.v18, this.state.v19, this.state.v20, this.state.v21, this.state.v22, this.state.v23,];
 
-		//array of forecast components that uses data from above arrays
+		/* Create 24 Forecast components, starting with current time and looped at 23:00 hours if necessary */
 		var forecasts = [];
-		var currentTime = new Date().getHours(); //function that gets current hour, 0=Midnight 23=11pm
+		var currentTime = new Date().getHours();
 		var timeNo = currentTime;
 		var i;
-		for (i = 0; i < 24-currentTime; i++){
+		/* Build components including and after the current time */
+		for (i = 0; i < 24-currentTime; i++) {
 			forecasts[i] = <Forecast 
 					desc={times[timeNo]} 
 					windSpeed={parseInt(winSpe[i]) + " mph"}
@@ -46,7 +49,8 @@ export default class DailyForecast extends Component {
 			timeNo++
 		}
 		var j;
-		for (j = 0; j <= currentTime; j++){
+		/* Build components leading up to current time */
+		for (j = 0; j <= currentTime; j++) {
 			forecasts[i] = <Forecast 
 					desc={times[j]} 
 					windSpeed={parseInt(winSpe[j]) + " mph"}
@@ -56,20 +60,20 @@ export default class DailyForecast extends Component {
 					i++;
 		}
 
-		//all forecasts are then added into the page here
+		/* Place Forecast components into application */
 		return (
 			<div class="page-content">
-       			{forecasts[0]}{forecasts[1]}{forecasts[2]}{forecasts[3]}{forecasts[4]}{forecasts[5]}
-       			{forecasts[6]}{forecasts[7]}{forecasts[8]}{forecasts[9]}{forecasts[10]}{forecasts[11]}
-       			{forecasts[12]}{forecasts[13]}{forecasts[14]}{forecasts[15]}{forecasts[16]}{forecasts[17]}
-       			{forecasts[18]}{forecasts[19]}{forecasts[20]}{forecasts[21]}{forecasts[22]}{forecasts[23]}
+	       			{forecasts[0]}{forecasts[1]}{forecasts[2]}{forecasts[3]}{forecasts[4]}{forecasts[5]}
+	       			{forecasts[6]}{forecasts[7]}{forecasts[8]}{forecasts[9]}{forecasts[10]}{forecasts[11]}
+	       			{forecasts[12]}{forecasts[13]}{forecasts[14]}{forecasts[15]}{forecasts[16]}{forecasts[17]}
+	       			{forecasts[18]}{forecasts[19]}{forecasts[20]}{forecasts[21]}{forecasts[22]}{forecasts[23]}{forecasts[23]}
 			</div>
 
 		);
 
 	}
 
-
+	/* Parse response from API, setting states which will be necessary to build Forecast components */
 	parseResponse = (parsed_json) => { 
 		console.log('Weather call daily sucessful');
 		this.setState({ 

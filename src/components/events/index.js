@@ -1,13 +1,14 @@
 import { h, Component } from 'preact';
 import style from './style';
-import $ from 'jquery'; // import jquery for API calls
+import $ from 'jquery';
 
 export default class Event extends Component {
-	// a constructor with initial set states
-	constructor(props){
+	
+	constructor(props) {
 		super(props);
 	}
 
+	/* Render Event with appropriate date, name, and description */
 	render() {
 		return(
 			<div class={"swiper-slide " + style.event}>
