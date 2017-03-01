@@ -40,7 +40,12 @@ export default class Notification extends Component {
 						<span class={style.notData}>
 							<p>
 								Current Weather Warning:<br/> 
-								{nextHour}:00 {chanceOfRainNextHour}% Chance of Rain 
+								{nextHour}:00 {chanceOfRainNextHour}% Chance of Rain<br/>
+								<a href="#" class="link close-popover">
+									<i class={`material-icons ${style.icon}`}>
+										close
+									</i>
+								</a>
 							</p>
 						</span>
 					</div>
@@ -71,7 +76,12 @@ export default class Notification extends Component {
 		  			<div class={"popover popover-notification " + style.notification}>
 						<span class={style.notData}>
 							<p>No Current Weather Warnings:<br/> 
-								{message}
+								{message}<br/>
+								<a href="#" class="link close-popover" >
+									<i class={`material-icons ${style.icon}`}>
+										close
+									</i>
+								</a>
 							</p>
 						</span>
 					</div>

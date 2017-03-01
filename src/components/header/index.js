@@ -7,7 +7,6 @@ export default class Header extends Component {
 
 	constructor(props) {
 		super(props);
-		this.changeNotification();
 		this.setState({
 			mode: 'day',
 		});
@@ -17,6 +16,7 @@ export default class Header extends Component {
 		if (this.state.mode === 'day') {
 			this.setState({...this.state, mode: 'night'})
 			this.props.onModeChange('night')
+
 		} else {
 			this.setState({...this.state, mode: 'day'})
 			this.props.onModeChange('day')
@@ -24,37 +24,14 @@ export default class Header extends Component {
 	}
 
 
-	changeNotification() {
-		if (this.state.notification) {
-			this.setState({...this.state, notification: false})
-			this.props.onNotificationChange(true);
-		}
-		else {
-			this.setState({...this.state, notification: true})
-			this.props.onNotificationChange(false);
-		}
-	}
-
-	selectIcon() {
-		if (this.state.notification) {
-			return "notifications";
-		} 
-		else {
-			return "notifications_off";
-		}
-	}
-	
-
-
-
 	render() {
 		return (
 				<div class={"navbar " + style.navbar}>  
 					<div class="navbar-inner">
 						<div class="left">
-							<a href="#" class="link open-notification" onClick={() => this.changeNotification()}>
+							<a href="#" class="link open-notification ">
 								<i class={`material-icons ${style.iconNotification}`}>
-									{this.selectIcon()}
+									notifications
 								</i>
 							</a> 
 						</div>
