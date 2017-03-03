@@ -13,7 +13,7 @@ export default class EventHandler extends Component {
 
   /* Call for event data from json file */
   fetchEvents = () => {
-    var url = "./lib/EVENTDATA.json";
+    var url = "./lib/scraper/EVENTDATA.json";
     $.ajax({
       url: url,
       dataType: "json",
@@ -25,9 +25,9 @@ export default class EventHandler extends Component {
   render() {
     var i;
     /* Initialize lists which will be utilized in constructing Event components */
-    var eveDates = [this.state.eventDate0,this.state.eventDate1,this.state.eventDate2,];
-    var eveNames = [this.state.eventName0,this.state.eventName1,this.state.eventName2,];
-    var eveDescs = [this.state.eventDesc0,this.state.eventDesc1,this.state.eventDesc2,];
+    var eveDates = [this.state.eventDate0,this.state.eventDate1,this.state.eventDate2,this.state.eventDate3,this.state.eventDate4,this.state.eventDate5,];
+    var eveNames = [this.state.eventName0,this.state.eventName1,this.state.eventName2,this.state.eventName3,this.state.eventName4,this.state.eventName5,];
+    var eveDescs = [this.state.eventDesc0,this.state.eventDesc1,this.state.eventDesc2,this.state.eventDesc3,this.state.eventDesc4,this.state.eventDesc5,];
     var count = parseInt(this.props.count);
     var events = [];
     /* Create Event components */
@@ -54,6 +54,15 @@ export default class EventHandler extends Component {
             <div class="swiper-slide">
               {events[2]}
             </div>
+            <div class="swiper-slide">
+              {events[3]}
+            </div>
+            <div class="swiper-slide">
+              {events[4]}
+            </div>
+            <div class="swiper-slide">
+              {events[5]}
+            </div>
           </div>
         </div>
       </div>
@@ -73,6 +82,15 @@ export default class EventHandler extends Component {
       eventDate2: parsed_json['edate'][2],
       eventName2: parsed_json['ename'][2],
       eventDesc2: parsed_json['edesc'][2],
+      eventDate3: parsed_json['edate'][3],
+      eventName3: parsed_json['ename'][3],
+      eventDesc3: parsed_json['edesc'][3],
+      eventDate4: parsed_json['edate'][4],
+      eventName4: parsed_json['ename'][4],
+      eventDesc4: parsed_json['edesc'][4],
+      eventDate5: parsed_json['edate'][5],
+      eventName5: parsed_json['ename'][5],
+      eventDesc5: parsed_json['edesc'][5],
     });
   }
 }
