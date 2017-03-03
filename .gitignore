@@ -5,4 +5,4 @@
 /coverage
 /.idea
 yarn.lock
-/.src/lib/scraper/EVENTDATA.json
+/src/lib/scraper/.EVENTDATA.json
