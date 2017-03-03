@@ -10,12 +10,13 @@ export default class Notification extends Component {
 		this.fetchWeatherData();
 		this.setState({
 			mode: 'day',
+			fetchWeatherData: false,
 		});
 	}
 
 	/* Call for weather data utilizing elements passed in as properties */
 	fetchWeatherData = () => {
-		console.log("fetchWeatherData entered")
+		console.log("Notification: fetchWeatherData entered")
 		var apiKey = "" + this.props.apiKey;
 		var latitude = "" + this.props.lat;
 		var longitude = "" + this.props.lon;
@@ -30,18 +31,21 @@ export default class Notification extends Component {
 
 	/* Render Notification popover and evaluate appropriate message to be displayed */
 	render() {	
+		if (!this.state.fetchWeatherData) {
+			this.fetchWeatherData();
+		}
 		if (this.props.notificationStatus) {
+			console.log("Notification: chance of rain = " + this.state.chanceOfRain1);
 			var currentTime = new Date().getHours();
 			var nextHour = currentTime+1;
-			var chanceOfRainNextHour = parseInt((this.state.chanceOfRain1)*100); 
 			/* Construct message presented if there is a chance of rain >= 50% in the current hour */
-			if ( (chanceOfRainNextHour > 49) ){
+			if ( (this.state.chanceOfRain1 > 0.49) ){
 				return (
 					<div class={"popover popover-notification " + style.notification}>
 						<span class={style.notData}>
 								<p>
 									<b>Current Weather Warning:</b><br/> 
-									{nextHour}:00 {chanceOfRainNextHour}% Chance of Rain
+									{nextHour}:00 chance of rain is {parseInt((this.state.chanceOfRain1)*100)}%
 								</p>
 								<a href="#" class="link close-popover"></a>
 						</span>
@@ -56,7 +60,7 @@ export default class Notification extends Component {
 		  		var futureHour = currentTime+2;
 		  		for (i = 0; i<chancesOfRain.length; i++){
 		  			/* Check if there is a chance of rain >= 50% in the next 11 hours */
-		  			if (chancesOfRain[i] > 49) {
+		  			if (chancesOfRain[i] > 0.49) {
 		  				chanceOfRainFuture = parseInt((chancesOfRain[i])*100);
 		  				futureHour = futureHour + i;
 		  				break;
@@ -68,7 +72,7 @@ export default class Notification extends Component {
 		  		}
 		  		/* Construct message presented if there is a chance of rain >= 50% in the next 11 hours */
 		  		else {
-		  			message = futureHour+ ":00 " + chanceOfRainFuture + "%";
+		  			message = futureHour+ ":00 chance of rain is " + chanceOfRainFuture + "%";
 		  		}
 		  		
 		  		/* Return correct notification message given weather data in the current hour 
@@ -87,6 +91,17 @@ export default class Notification extends Component {
 		  	}
 		}
 		else {
+			return (
+		  			<div class={"popover popover-notification " + style.notification}>
+						<span class={style.notData}>
+								<p>
+									<b>NaN</b><br/> 
+								</p>
+								<a href="#" class="link close-popover"></a>
+						</span>
+					</div>
+		  		);
+
 		}
 	}
 
@@ -94,18 +109,19 @@ export default class Notification extends Component {
 	parseResponse = (parsed_json) => {
 		console.log('Notification: Weather API call sucessful');
 		this.setState({
-			chanceOfRain1: [parsed_json['hourly']['data'][1]['precipProbability']], 
-			chanceOfRain2: [parsed_json['hourly']['data'][2]['precipProbability']], 
-			chanceOfRain3: [parsed_json['hourly']['data'][3]['precipProbability']], 
-			chanceOfRain4: [parsed_json['hourly']['data'][4]['precipProbability']], 
-			chanceOfRain5: [parsed_json['hourly']['data'][5]['precipProbability']], 
-			chanceOfRain6: [parsed_json['hourly']['data'][6]['precipProbability']], 
-			chanceOfRain7: [parsed_json['hourly']['data'][7]['precipProbability']], 
-			chanceOfRain8: [parsed_json['hourly']['data'][8]['precipProbability']], 
-			chanceOfRain9: [parsed_json['hourly']['data'][9]['precipProbability']], 
-			chanceOfRain10: [parsed_json['hourly']['data'][10]['precipProbability']], 
-			chanceOfRain11: [parsed_json['hourly']['data'][11]['precipProbability']], 
-			chanceOfRain12: [parsed_json['hourly']['data'][12]['precipProbability']], 
+			chanceOfRain1: parsed_json['hourly']['data'][1]['precipProbability'], 
+			chanceOfRain2: parsed_json['hourly']['data'][2]['precipProbability'], 
+			chanceOfRain3: parsed_json['hourly']['data'][3]['precipProbability'], 
+			chanceOfRain4: parsed_json['hourly']['data'][4]['precipProbability'], 
+			chanceOfRain5: parsed_json['hourly']['data'][5]['precipProbability'], 
+			chanceOfRain6: parsed_json['hourly']['data'][6]['precipProbability'], 
+			chanceOfRain7: parsed_json['hourly']['data'][7]['precipProbability'], 
+			chanceOfRain8: parsed_json['hourly']['data'][8]['precipProbability'], 
+			chanceOfRain9: parsed_json['hourly']['data'][9]['precipProbability'], 
+			chanceOfRain10: parsed_json['hourly']['data'][10]['precipProbability'], 
+			chanceOfRain11: parsed_json['hourly']['data'][11]['precipProbability'], 
+			chanceOfRain12: parsed_json['hourly']['data'][12]['precipProbability'],
+			fetchWeatherData: true, 
 		});      
 	}
 

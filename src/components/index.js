@@ -94,7 +94,7 @@ export default class App extends Component {
 				<div class="device-wrapper">
 					<div class="device device-android"> 
 						<div id="app" class={`framework7-root ${this.state.active} ${this.state.mode} ${this.state.notification}`}> 
-			
+							<Notification apiKey="" lat="" lon="" notificationStatus={false}/>
 							<div class="views tabs">
 								<div class={`view ${this.state.active!=='view-day'?'view tab':'view-main tab active'}`} div id="view-day">
 									<Header onModeChange={mode => this.setState({...this.state, mode})} />
