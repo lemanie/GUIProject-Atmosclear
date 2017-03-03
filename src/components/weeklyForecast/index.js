@@ -21,7 +21,7 @@ export default class WeeklyForecast extends Component {
 			url: url,
 			dataType: "jsonp",
 			success : this.parseResponse,
-			error : function(req, err){ console.log('API call failed ' + err); }
+			error : function(req, err){ console.log('Weekly: Weather API call failed, error: ' + err); }
 		})
 	}
 
@@ -72,7 +72,7 @@ export default class WeeklyForecast extends Component {
 
 	/* Parse response from API, setting states which will be necessary to build Forecast components */
 	parseResponse = (parsed_json) => { 
-		console.log('Weather call weekly sucessful');
+		console.log('Weekly: Weather API call sucessful');
 		this.setState({ 
 				wS0: [parsed_json['daily']['data'][0]['windSpeed']],
 				cR0: [parsed_json['daily']['data'][0]['precipProbability']], 

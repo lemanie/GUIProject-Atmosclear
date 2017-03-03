@@ -36,14 +36,14 @@ export default class App extends Component {
 			dataType: "json",
 			success: this.parseLocation,
 			error: function(req, err){
-				console.log('Location call unsucessful, error: ' + err);
+				console.log('App: Location API call failed, error: ' + err);
 			}
 		})
 	}
 
 	render() {
 		/* Initialize elements necessary to make API calls and obtain weather data */
-		var APIKEY = "" + "c33249746297c1416596be5427f65f08";
+		var APIKEY = "" + "9211576f6b204ec1c8eb8dde7bbcfdaa";
 		var LATITUDE = String(this.state.latitude); 
 		var LONGITUDE = String(this.state.longitude);
 		if (this.state.fetchLocationCalled){
@@ -94,7 +94,7 @@ export default class App extends Component {
 				<div class="device-wrapper">
 					<div class="device device-android"> 
 						<div id="app" class={`framework7-root ${this.state.active} ${this.state.mode} ${this.state.notification}`}> 
-						<Notification apiKey="" lat="" lon="" notificationStatus={false}/>
+			
 							<div class="views tabs">
 								<div class={`view ${this.state.active!=='view-day'?'view tab':'view-main tab active'}`} div id="view-day">
 									<Header onModeChange={mode => this.setState({...this.state, mode})} />
@@ -132,7 +132,7 @@ export default class App extends Component {
 
 	/* Parse longitude and latitude data from pulled API data */
 	parseLocation = (parsed_json) => {
-		console.log('Location call sucessful');
+		console.log('App: Location API call sucessful');
 		this.setState({
 			longitude: parsed_json['longitude'],
 			latitude: parsed_json['latitude'],

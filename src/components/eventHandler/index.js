@@ -18,7 +18,7 @@ export default class EventHandler extends Component {
       url: url,
       dataType: "json",
       success: this.parseEvents,
-      error: function(req, err){console.log('Events call to JSON file unsucessful');}
+      error: function(req, err){console.log('EventsHandler: EVENTDATA JSON file call failed');}
     })
   }
 
@@ -71,7 +71,7 @@ export default class EventHandler extends Component {
 
   /* Parse response from json file, setting states which will be necessary to build Event components */
   parseEvents = (parsed_json) => {
-    console.log('Events call to JSON file sucessful');
+    console.log('EventsHandler: EVENTDATA JSON file call sucessful');
     this.setState({
       eventDate0: parsed_json['edate'][0],
       eventName0: parsed_json['ename'][0],

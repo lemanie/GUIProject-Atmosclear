@@ -7,9 +7,7 @@ export default class Notification extends Component {
 		and set initial state of app as "daytime" mode */
 	constructor(props){
 		super(props);
-		if (this.props.notificationStatus) {
-			this.fetchWeatherData();
-		}
+		this.fetchWeatherData();
 		this.setState({
 			mode: 'day',
 		});
@@ -17,6 +15,7 @@ export default class Notification extends Component {
 
 	/* Call for weather data utilizing elements passed in as properties */
 	fetchWeatherData = () => {
+		console.log("fetchWeatherData entered")
 		var apiKey = "" + this.props.apiKey;
 		var latitude = "" + this.props.lat;
 		var longitude = "" + this.props.lon;
@@ -25,7 +24,7 @@ export default class Notification extends Component {
 			url: url,
 			dataType: "jsonp",
 			success : this.parseResponse,
-			error : function(req, err){ console.log('Notification API call failed ' + err); }
+			error : function(req, err){ console.log('Notification: Weather API call failed, error: ' + err); }
 		})
 	}
 
@@ -35,7 +34,6 @@ export default class Notification extends Component {
 			var currentTime = new Date().getHours();
 			var nextHour = currentTime+1;
 			var chanceOfRainNextHour = parseInt((this.state.chanceOfRain1)*100); 
-			console.log(chanceOfRainNextHour);
 			/* Construct message presented if there is a chance of rain >= 50% in the current hour */
 			if ( (chanceOfRainNextHour > 49) ){
 				return (
@@ -94,7 +92,7 @@ export default class Notification extends Component {
 
 	/* Parse response from API, setting states which will be necessary to build Notification component */
 	parseResponse = (parsed_json) => {
-		console.log('Notification API call sucessful');
+		console.log('Notification: Weather API call sucessful');
 		this.setState({
 			chanceOfRain1: [parsed_json['hourly']['data'][1]['precipProbability']], 
 			chanceOfRain2: [parsed_json['hourly']['data'][2]['precipProbability']], 

@@ -21,7 +21,7 @@ export default class Home extends Component {
 			url: url,
 			dataType: "jsonp",
 			success : this.parseResponse,
-			error : function(req, err){ console.log('API call failed ' + err); }
+			error : function(req, err){ console.log('Home: Weather API call failed, error: ' + err); }
 		})
 	}
 
@@ -49,7 +49,7 @@ export default class Home extends Component {
 
 	/* Parse response from API, setting states which will be necessary to build Home components */
 	parseResponse = (parsed_json) => {
-		console.log('Weather call home sucessful');
+		console.log('Home: Weather API call sucessful');
 		this.setState({
 			cloudCoverage: parsed_json['currently']['cloudCover'], 
 			chanceOfRain: parsed_json['currently']['precipProbability'], 
