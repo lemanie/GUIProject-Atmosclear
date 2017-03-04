@@ -27,6 +27,8 @@ export default class Home extends Component {
 
 	/* Render home screen by placing Tile components in organized rows */
 	render() {
+		var dailyRating = "Good";
+
 		return (
 			<div class={"allRows " + style.home}>
 				<div class={"row " + style.row}>
@@ -42,6 +44,9 @@ export default class Home extends Component {
 					<Tile title="Humidity" data={this.state.humidity}/>
 					<Tile title="Pressure" data={this.state.pressure}/>
 					<Tile title="Sunset Time" data={this.state.sunsetTime}/>
+		  		</div>
+		  		<div class={"row " + style.row}>
+		  			<Tile title="Rating" data={dailyRating}/>
 		  		</div>
 		  	</div>
   		);
@@ -59,6 +64,17 @@ export default class Home extends Component {
 			humidity: parsed_json['currently']['humidity'],
 			pressure: parsed_json['currently']['pressure'],
 			sunsetTime: parsed_json['daily']['data'][0]['sunsetTime'],
+			sunriseTime: parsed_json['daily']['data'][0]['sunriseTime'],
+
+			wS0: parsed_json['daily']['data'][0]['windSpeed'],
+			cR0: parsed_json['daily']['data'][0]['precipProbability'], 
+			cC0: parsed_json['daily']['data'][0]['cloudCover'],
+			v0: parsed_json['daily']['data'][0]['visibility'],
+			tMin: parsed_json['daily']['data'][0]['temperatureMin'],
+			tMax: parsed_json['daily']['data'][0]['temperatureMax'],
+			h0: parsed_json['daily']['data'][0]['humidity'],
+			p0: parsed_json['daily']['data'][0]['pressure'],
+
 		});      
 	}
 

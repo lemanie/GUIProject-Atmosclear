@@ -1,5 +1,5 @@
 :global(.day) .tile {
-	height: 100px;
+	height: 87px;
 	color: white;
 
 	-webkit-box-shadow: inset 0px 0px 3px 1px rgba(150,147,174,0.5);
@@ -26,7 +26,7 @@
 			width: 50%;
 			height: 100%;
 			float: right;
-			padding-top: 15px;
+			padding-top: 10px;
 			padding-left: 5px;
 			padding-right: 5px;
 		}		
@@ -34,7 +34,7 @@
 			font-size: 3.5em;
 			width: 50%;
 			height: 100%;
-			padding-top: 20px;
+			padding-top: 15px;
 			padding-left: 20px;
 		}
 	}
@@ -49,8 +49,8 @@
 		}	
 		.icon {
 			font-size: 2em;
-			padding-top: 15px;
-			margin-bottom: 10px;
+			padding-top: 10px;
+			margin-bottom: 2px;
 			display: block;
 			text-align: center;
 		}
@@ -58,7 +58,7 @@
 }
 
 :global(.night) .tile {
-	height: 100px;
+	height: 87px;
 	color: #cc0000;
 	
 	-webkit-box-shadow: inset 0px 0px 3px 1px rgba(64,64,64,0.5);
@@ -85,7 +85,7 @@
 			width: 50%;
 			height: 100%;
 			float: right;
-			padding-top: 15px;
+			padding-top: 10px;
 			padding-left: 5px;
 			padding-right: 5px;
 		}		
@@ -93,7 +93,7 @@
 			font-size: 3.5em;
 			width: 50%;
 			height: 100%;
-			padding-top: 20px;
+			padding-top: 15px;
 			padding-left: 20px;
 		}
 	}
@@ -108,10 +108,49 @@
 		}	
 		.icon {
 			font-size: 2em;
-			padding-top: 15px;
-			margin-bottom: 10px;
+			padding-top: 10px;
+			margin-bottom: 2px;
 			display: block;
 			text-align: center;
 		}
 	}
 }
+
+:global(.day) .rating {
+	height: 26px;
+	background-color: #BCB3D0;
+	color: white;
+	width: 100%;
+
+	-webkit-box-shadow: inset 0px 0px 3px 1px rgba(150,147,174,0.5);
+	-moz-box-shadow: inset 0px 0px 3px 1px rgba(150,147,174,0.5);
+	-box-shadow: inset 0px 0px 3px 1px rgba(150,147,174,0.5);
+
+	.ratingData {
+		width: 100%;
+		font-size: 0.95em; 
+		display: block;
+		text-align: center;
+		padding-top: 3px;
+	}
+}
+
+:global(.night) .rating {
+	height: 26px;
+	background-color: #000;
+	color: #cc0000;
+	width: 100%;
+
+	-webkit-box-shadow: inset 0px 0px 3px 1px rgba(64,64,64,0.5);
+	-moz-box-shadow: inset 0px 0px 3px 1px rgba(64,64,64,0.5);
+	-box-shadow: inset 0px 0px 3px 1px rgba(64,64,64,0.5);
+
+	.ratingData {
+		width: 100%;
+		font-size: 0.95em; 
+		display: block;
+		text-align: center;
+		padding-top: 3px;
+	}
+}
+

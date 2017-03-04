@@ -71,6 +71,19 @@ export default class Tile extends Component {
 
   	/* Render appropriate Tile utilizing associated data, icon, and CSS properties */
 	render() {
+		if (this.props.title == "Rating") {
+			return (
+				<div class={`
+					${style.tile} 
+					${style.rating } 
+					${style[this.props.colour]}
+				`}>
+					<span class={style.ratingData}>
+						Stargazing Conditions: {this.props.data} 
+					</span> 
+				</div>
+			);
+		}
 		this.selectData(this.props.title);
 		return (
 			<div class={`
