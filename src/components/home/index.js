@@ -27,7 +27,7 @@ export default class Home extends Component {
 
 	/* Render home screen by placing Tile components in organized rows */
 	render() {
-		var dailyRating = "Good";
+		var dailyRating = this.getDailyRating();
 
 		return (
 			<div class={"allRows " + style.home}>
@@ -64,18 +64,44 @@ export default class Home extends Component {
 			humidity: parsed_json['currently']['humidity'],
 			pressure: parsed_json['currently']['pressure'],
 			sunsetTime: parsed_json['daily']['data'][0]['sunsetTime'],
-			sunriseTime: parsed_json['daily']['data'][0]['sunriseTime'],
 
 			wS0: parsed_json['daily']['data'][0]['windSpeed'],
 			cR0: parsed_json['daily']['data'][0]['precipProbability'], 
 			cC0: parsed_json['daily']['data'][0]['cloudCover'],
 			v0: parsed_json['daily']['data'][0]['visibility'],
-			tMin: parsed_json['daily']['data'][0]['temperatureMin'],
-			tMax: parsed_json['daily']['data'][0]['temperatureMax'],
-			h0: parsed_json['daily']['data'][0]['humidity'],
-			p0: parsed_json['daily']['data'][0]['pressure'],
 
 		});      
+	}
+
+	/* Assess optimality of stargazing given todays weather conditions */
+	getDailyRating = () => {
+		var rating = "";
+		var cloudCoverage = this.state.cC0;
+		var visibility = this.state.v0;
+		var chanceRain = this.state.cR0;
+		var windSpeed = this.state.wS0;
+		console.log("chanceRain: " + chanceRain + " Visibility: " + visibility + " cloudCoverage: " + cloudCoverage);
+		if (chanceRain > 0.7 || cloudCoverage > 0.75 || windSpeed > 25) {
+			rating = "Poor";
+			return rating;
+		}
+		if (visibility < 10) {
+			if (cloudCoverage < 0.60) {
+				rating = "Good";
+			}
+			else {
+				rating = "Poor";
+			}
+		}
+		else {
+			if (cloudCoverage < 0.65) {
+				rating = "Good";
+			}
+			else {
+				rating = "Poor";
+			}
+		}		
+		return rating;
 	}
 
 }
