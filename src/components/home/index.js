@@ -86,16 +86,22 @@ export default class Home extends Component {
 			return rating;
 		}
 		if (visibility < 10) {
-			if (cloudCoverage < 0.60) {
+			if (cloudCoverage < 0.45) {
 				rating = "Good";
+			}
+			else if (cloudCoverage < 0.60) {
+				rating = "Fair";
 			}
 			else {
 				rating = "Poor";
 			}
 		}
 		else {
-			if (cloudCoverage < 0.65) {
+			if (cloudCoverage < 0.50) {
 				rating = "Good";
+			}
+			else if (cloudCoverage < 0.65) {
+				rating = "Fair";
 			}
 			else {
 				rating = "Poor";
