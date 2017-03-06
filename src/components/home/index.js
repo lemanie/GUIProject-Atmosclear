@@ -64,11 +64,16 @@ export default class Home extends Component {
 			humidity: parsed_json['currently']['humidity'],
 			pressure: parsed_json['currently']['pressure'],
 			sunsetTime: parsed_json['daily']['data'][0]['sunsetTime'],
+			sunriseTime: parsed_json['daily']['data'][0]['sunriseTime'],
 
 			wS0: parsed_json['daily']['data'][0]['windSpeed'],
 			cR0: parsed_json['daily']['data'][0]['precipProbability'], 
 			cC0: parsed_json['daily']['data'][0]['cloudCover'],
 			v0: parsed_json['daily']['data'][0]['visibility'],
+			tMax: parsed_json['daily']['data'][0]['temperatureMax'],
+			tMin: parsed_json['daily']['data'][0]['temperatureMin'],
+			h0: parsed_json['daily']['data'][0]['humidity'],
+			p0: parsed_json['daily']['data'][0]['pressure'],
 
 		});      
 	}
@@ -76,38 +81,32 @@ export default class Home extends Component {
 	/* Assess optimality of stargazing given todays weather conditions */
 	getDailyRating = () => {
 		var rating = "";
-		var cloudCoverage = this.state.cC0;
-		var visibility = this.state.v0;
-		var chanceRain = this.state.cR0;
-		var windSpeed = this.state.wS0;
-		console.log("chanceRain: " + chanceRain + " Visibility: " + visibility + " cloudCoverage: " + cloudCoverage);
-		if (chanceRain > 0.7 || cloudCoverage > 0.75 || windSpeed > 25) {
-			rating = "Poor";
-			return rating;
+		var cloudCoverage = this.state.cC0 * 0.33;
+		var visibility = ((this.state.v0 - 0.06) / 11.99) * 0.31;
+		var chanceRain = this.state.cR0 * 0.25;
+		var windspeed = (this.state.wS0 / 173.0) * 0.07;
+		var pressure = ((this.state.p0 - 925.60) / 128.00) * 0.005;
+		var averageTemp = (this.state.tMax + this.state.tMin) / 2;
+		var temperature = ((averageTemp + 27.20) / 65.70) * 0.005;
+		var humidity = this.state.h0 * 0.02;
+		var sunset = new Date(0);
+		sunset.setUTCSeconds(this.state.sunsetTime);
+		var sunrise = new Date(0);
+		sunrise.setUTCSeconds(this.state.sunriseTime);
+		var hoursSunlight = (((sunset.getHours() - sunrise.getHours()) - 6.0) / 12) * 0.01;
+		var negativeElementSum = cloudCoverage + chanceRain + humidity + windspeed + hoursSunlight + temperature;
+		var positiveElementSum = pressure + visibility;
+		var rating = 0.5 + positiveElementSum - negativeElementSum;
+		console.log("rating: " + rating);
+		if (rating <= 0.35) {
+			return "Poor";
 		}
-		if (visibility < 10) {
-			if (cloudCoverage < 0.45) {
-				rating = "Good";
-			}
-			else if (cloudCoverage < 0.60) {
-				rating = "Fair";
-			}
-			else {
-				rating = "Poor";
-			}
+		else if (rating >= 0.61) {
+			return "Excellent";
 		}
 		else {
-			if (cloudCoverage < 0.50) {
-				rating = "Good";
-			}
-			else if (cloudCoverage < 0.65) {
-				rating = "Fair";
-			}
-			else {
-				rating = "Poor";
-			}
-		}		
-		return rating;
+			return "Fair";
+		}
 	}
 
 }
