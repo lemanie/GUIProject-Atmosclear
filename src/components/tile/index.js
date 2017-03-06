@@ -79,7 +79,7 @@ export default class Tile extends Component {
 					${style[this.props.colour]}
 				`}>
 					<span class={style.ratingData}>
-						Stargazing Conditions: {this.props.data} 
+						Today's Stargazing Condition: {this.props.data}
 					</span> 
 				</div>
 			);
