@@ -33,4 +33,7 @@ Authors
 -------
 Melanie Bryant, Sarah Weinstein, Benjamin Ofoedu, Amy Dowse, Leonardo Hoffman
 
-![Image](Frames.jpg)
+Preview
+======
+[!["Demo"](Frames.jpg)](https://youtu.be/tmmlnqZ-DR8?t=18s "Demo")
+
