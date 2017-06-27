@@ -32,3 +32,5 @@ The application will open in your web browser
 Authors
 -------
 Melanie Bryant, Sarah Weinstein, Benjamin Ofoedu, Amy Dowse, Leonardo Hoffman
+
+![Image](Frames.jpg)
