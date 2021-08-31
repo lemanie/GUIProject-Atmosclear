@@ -1,5 +1,5 @@
 # Atmosclear
-A high-fi prototype weather app for amateur astronomers
+QMUL Year 2 Coursework - A high-fi prototype weather app for amateur astronomers
 
 Overview
 ======
